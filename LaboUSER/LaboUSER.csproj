@@ -151,6 +151,7 @@
     <Compile Include="Areas\user\filter\SessionCheckFilter.cs" />
     <Compile Include="Areas\user\Models\clsSession.cs" />
     <Compile Include="Areas\user\Models\DataEncryptor.cs" />
+    <Compile Include="Areas\user\Models\EncrytDecrypt.cs" />
     <Compile Include="Areas\user\Models\loginmodel.cs" />
     <Compile Include="Areas\user\Models\payment.cs" />
     <Compile Include="Areas\user\Models\userjob.cs" />

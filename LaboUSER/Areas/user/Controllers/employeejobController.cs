@@ -17,7 +17,6 @@ namespace LaboUSER.Areas.user.Controllers
     {
         private readonly LABOEntities _dataContext;
         public readonly SentEmailController _sendemail;
-        public DataEncryptor keys = new DataEncryptor();
         public employeejobController()
         {
             _dataContext = new LABOEntities();
@@ -55,9 +54,9 @@ namespace LaboUSER.Areas.user.Controllers
             //Get send user details...!!!
             tbl_Users touserdetail = _dataContext.tbl_Users.Where(s => s.Pk_UserId == clsSession.UserID).FirstOrDefault();
             //Get Job Detail...!!!
-            string userid = keys.EncryptString(clsSession.UserID.ToString());
-            string jobid = keys.EncryptString(id.ToString());
-            string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + userid + "&jobid=" + jobid;
+            string userid = EncrytDecrypt.passwordEncrypt(clsSession.UserID.ToString(),true);
+            string jobid = EncrytDecrypt.passwordEncrypt(id.ToString(), true);
+            string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + clsSession.UserID.ToString() + "&jobid=" + id.ToString();
             MailMessage message = new MailMessage(
            "info@hardyhat.com", // From field
            touserdetail.EmailId, // Recipient field
@@ -74,9 +73,9 @@ namespace LaboUSER.Areas.user.Controllers
                 //Get send user details...!!!
                 tbl_Users touserdetailClient = _dataContext.tbl_Users.Where(s => s.Pk_UserId == jobstatus.fromUserId).FirstOrDefault();
                 //Get Job Detail...!!!
-                string touserid = keys.EncryptString(jobstatus.toUserId.ToString());
-                string tojobid = keys.EncryptString(job.Pk_JobId.ToString());
-                string paymenturlClient = "http://hardyhat.com/user/payment/checkout?userid=" + touserid + "&jobid=" + tojobid;
+                string touserid = EncrytDecrypt.passwordEncrypt(touserdetailClient.Pk_UserId.ToString(), true);
+                string tojobid = EncrytDecrypt.passwordEncrypt(job.Pk_JobId.ToString(), true);
+                string paymenturlClient = "http://hardyhat.com/user/payment/checkout?userid=" + touserdetailClient.Pk_UserId.ToString() + "&jobid=" + job.Pk_JobId.ToString();
                 MailMessage messageClient = new MailMessage(
                "info@hardyhat.com", // From field
                touserdetail.EmailId, // Recipient field
@@ -168,9 +167,9 @@ namespace LaboUSER.Areas.user.Controllers
             //Sent Email to employee to introduce about job detail...!!!
             //Get send user details...!!!
             tbl_Users touserdetail = _dataContext.tbl_Users.Where(s => s.Pk_UserId == jobstatus.fromUserId).FirstOrDefault();
-            string userid = keys.EncryptString(clsSession.UserID.ToString());
-            string jobid = keys.EncryptString(job.Pk_JobId.ToString());
-            string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + userid + "&jobid=" + jobid;
+            string userid = EncrytDecrypt.passwordEncrypt(clsSession.UserID.ToString(), true);
+            string jobid = EncrytDecrypt.passwordEncrypt(job.Pk_JobId.ToString(),true);
+            string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + clsSession.UserID.ToString() + "&jobid=" + job.Pk_JobId.ToString();
             //Get Job Detail...!!!
             MailMessage message = new MailMessage(
            "info@hardyhat.com", // From field

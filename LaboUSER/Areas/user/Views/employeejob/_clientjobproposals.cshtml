@@ -31,11 +31,11 @@
                             </a>
                             @if (@item.EmplyeeFeePaymentStatus == "Approved")
                             {
-                                @{ 
-                                    string userid = new LaboUSER.Areas.user.Models.DataEncryptor().EncryptString(LaboUSER.Areas.user.clsSession.UserID.ToString());
-                                    string jobid = new LaboUSER.Areas.user.Models.DataEncryptor().EncryptString(Convert.ToString(@item.Fk_JobId));
-                                }
-                                <a href="http://hardyhat.com/user/payment/checkout?userid=@userid &jobid=@jobid" class="btn btn-sm pmd-btn-raised pmd-ripple-effect btn-success">Pay money</a>
+
+                                string userid = LaboUSER.Areas.user.Models.EncrytDecrypt.passwordEncrypt(LaboUSER.Areas.user.clsSession.UserID.ToString(), true);
+                                string jobid = LaboUSER.Areas.user.Models.EncrytDecrypt.passwordEncrypt(Convert.ToString(@item.Fk_JobId), true);
+
+                                <a href="http://hardyhat.com/user/payment/checkout?userid=@userid&jobid=@jobid" class="btn btn-sm pmd-btn-raised pmd-ripple-effect btn-success">Pay money</a>
                             }
                         </td>
                     </tr>

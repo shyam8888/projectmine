@@ -34,15 +34,15 @@ namespace LaboUSER.Areas.user.Controllers
             //Check for this jobid,userid,transaction Id status
             if (!string.IsNullOrEmpty(userid) && !string.IsNullOrEmpty(jobid))
             {
-                userid = keys.DecryptString(userid);
-                jobid = keys.DecryptString(jobid);
+                userid = EncrytDecrypt.passwordDecrypt(userid.ToString(),true);
+                jobid = EncrytDecrypt.passwordDecrypt(jobid.ToString(), true);
                 try
                 {
                     var table = new DataTable();
                     SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("select * from [dbo].[tbl_JobPayment] where Fk_JobId=" + jobid + " and UserId=" + userid + ";", conn);
+                    SqlCommand cmd = new SqlCommand("select * from [dbo].[tbl_JobPayment] where Fk_JobId=" + jobid + " and UserId='" + userid + "';", conn);
                     // create data adapter
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     // this will query your database and return the result to your datatable
@@ -54,7 +54,7 @@ namespace LaboUSER.Areas.user.Controllers
                         //insert into the job payment table...!!!
                         Decimal companyFee = Convert.ToDecimal("2.00");
                         conn.Open();
-                        SqlCommand cmdInsert = new SqlCommand("insert into [dbo].[tbl_JobPayment] (Fk_JobId,UserId,Amount) values(" + jobid + "," + userid + "," + companyFee + ");", conn);
+                        SqlCommand cmdInsert = new SqlCommand("insert into [dbo].[tbl_JobPayment] (Fk_JobId,UserId,Amount) values(" + jobid + ",'" + userid + "'," + companyFee + ");", conn);
                         cmdInsert.ExecuteNonQuery();
                         conn.Close();
                         Console.WriteLine("Inserting Data Successfully");

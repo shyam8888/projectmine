@@ -91,6 +91,13 @@ namespaces: new[] { "LaboUSER.Areas.user.Controllers" }
              constraints: new { httpMethod = new HttpMethodConstraint(new string[] { "GET" }) }
          ).DataTokens = new RouteValueDictionary(new { area = "user" });
             routes.MapRoute(
+            name: "login_post",
+            url: "login",
+            defaults: new { controller = "Login", action = "Login" },
+            namespaces: new[] { "LaboUSER.Areas.user.Controllers" },
+            constraints: new { httpMethod = new HttpMethodConstraint(new string[] { "POST" }) }
+        ).DataTokens = new RouteValueDictionary(new { area = "user" });
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 namespaces: new[] { "LaboUSER.Controllers" },
