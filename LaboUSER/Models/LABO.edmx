@@ -545,15 +545,15 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           </AssociationSet>
           <EntitySet Name="view_user_job" EntityType="LABOModel.view_user_job" />
           <EntitySet Name="tbl_JobEmployees" EntityType="LABOModel.tbl_JobEmployees" />
-          <FunctionImport Name="GET_JOB_EMPLOYEE" ReturnType="Collection(LABOModel.GET_JOB_EMPLOYEE_Result)">
-            <Parameter Name="jobid" Mode="In" Type="Int32" />
-            <Parameter Name="userid" Mode="In" Type="Guid" />
-          </FunctionImport>
           <FunctionImport Name="dashboard_count" ReturnType="Collection(LABOModel.dashboard_count_Result)">
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="userid" Mode="In" Type="Guid" />
           </FunctionImport>
           <EntitySet Name="tbl_JobPayment" EntityType="LABOModel.tbl_JobPayment" />
+          <FunctionImport Name="GET_JOB_EMPLOYEE" ReturnType="Collection(LABOModel.GET_JOB_EMPLOYEE_Result)">
+            <Parameter Name="jobid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Guid" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="view_user_job">
           <Key>
@@ -606,6 +606,39 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           <Property Name="toUserId" Type="Guid" />
           <Property Name="fromUserName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="dashboard_count_Result">
+          <Property Type="Int32" Name="TotalAllUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalActiveUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalBlockedUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalClients" Nullable="true" />
+          <Property Type="Int32" Name="ActiveClients" Nullable="true" />
+          <Property Type="Int32" Name="PendingClients" Nullable="true" />
+          <Property Type="Int32" Name="BlockedClients" Nullable="true" />
+          <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+          <Property Type="Int32" Name="ActiveEmployees" Nullable="true" />
+          <Property Type="Int32" Name="PendingEmployees" Nullable="true" />
+          <Property Type="Int32" Name="BlockedEmployees" Nullable="true" />
+          <Property Type="Int32" Name="TotalJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalActiveJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalInActiveJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalPendingJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalApprovedJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalRequestedJobs" Nullable="false" />
+          <Property Type="Int32" Name="TotalProposalJobs" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="tbl_JobPayment">
+          <Key>
+            <PropertyRef Name="Pk_JobPaymentId" />
+          </Key>
+          <Property Name="Pk_JobPaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_JobId" Type="Int64" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         <ComplexType Name="GET_JOB_EMPLOYEE_Result">
           <Property Type="Guid" Name="Pk_UserId" Nullable="false" />
           <Property Type="String" Name="Address" Nullable="true" />
@@ -649,40 +682,8 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           <Property Type="Guid" Name="toUserId" Nullable="true" />
           <Property Type="String" Name="fromUserName" Nullable="true" MaxLength="500" />
           <Property Type="String" Name="EmplyeeFeePaymentStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="BraintreeStatus" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="dashboard_count_Result">
-          <Property Type="Int32" Name="TotalAllUsers" Nullable="true" />
-          <Property Type="Int32" Name="TotalActiveUsers" Nullable="true" />
-          <Property Type="Int32" Name="TotalBlockedUsers" Nullable="true" />
-          <Property Type="Int32" Name="TotalClients" Nullable="true" />
-          <Property Type="Int32" Name="ActiveClients" Nullable="true" />
-          <Property Type="Int32" Name="PendingClients" Nullable="true" />
-          <Property Type="Int32" Name="BlockedClients" Nullable="true" />
-          <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
-          <Property Type="Int32" Name="ActiveEmployees" Nullable="true" />
-          <Property Type="Int32" Name="PendingEmployees" Nullable="true" />
-          <Property Type="Int32" Name="BlockedEmployees" Nullable="true" />
-          <Property Type="Int32" Name="TotalJobs" Nullable="true" />
-          <Property Type="Int32" Name="TotalActiveJobs" Nullable="true" />
-          <Property Type="Int32" Name="TotalInActiveJobs" Nullable="true" />
-          <Property Type="Int32" Name="TotalPendingJobs" Nullable="true" />
-          <Property Type="Int32" Name="TotalApprovedJobs" Nullable="true" />
-          <Property Type="Int32" Name="TotalRequestedJobs" Nullable="false" />
-          <Property Type="Int32" Name="TotalProposalJobs" Nullable="false" />
-        </ComplexType>
-        <EntityType Name="tbl_JobPayment">
-          <Key>
-            <PropertyRef Name="Pk_JobPaymentId" />
-          </Key>
-          <Property Name="Pk_JobPaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fk_JobId" Type="Int64" />
-          <Property Name="UserId" Type="Guid" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -918,6 +919,44 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="dashboard_count" FunctionName="LABOModel.Store.dashboard_count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LABOModel.dashboard_count_Result">
+                <ScalarProperty Name="TotalAllUsers" ColumnName="TotalAllUsers" />
+                <ScalarProperty Name="TotalActiveUsers" ColumnName="TotalActiveUsers" />
+                <ScalarProperty Name="TotalBlockedUsers" ColumnName="TotalBlockedUsers" />
+                <ScalarProperty Name="TotalClients" ColumnName="TotalClients" />
+                <ScalarProperty Name="ActiveClients" ColumnName="ActiveClients" />
+                <ScalarProperty Name="PendingClients" ColumnName="PendingClients" />
+                <ScalarProperty Name="BlockedClients" ColumnName="BlockedClients" />
+                <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+                <ScalarProperty Name="ActiveEmployees" ColumnName="ActiveEmployees" />
+                <ScalarProperty Name="PendingEmployees" ColumnName="PendingEmployees" />
+                <ScalarProperty Name="BlockedEmployees" ColumnName="BlockedEmployees" />
+                <ScalarProperty Name="TotalJobs" ColumnName="TotalJobs" />
+                <ScalarProperty Name="TotalActiveJobs" ColumnName="TotalActiveJobs" />
+                <ScalarProperty Name="TotalInActiveJobs" ColumnName="TotalInActiveJobs" />
+                <ScalarProperty Name="TotalPendingJobs" ColumnName="TotalPendingJobs" />
+                <ScalarProperty Name="TotalApprovedJobs" ColumnName="TotalApprovedJobs" />
+                <ScalarProperty Name="TotalRequestedJobs" ColumnName="TotalRequestedJobs" />
+                <ScalarProperty Name="TotalProposalJobs" ColumnName="TotalProposalJobs" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_JobPayment">
+            <EntityTypeMapping TypeName="LABOModel.tbl_JobPayment">
+              <MappingFragment StoreEntitySet="tbl_JobPayment">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="Pk_JobPaymentId" ColumnName="Pk_JobPaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GET_JOB_EMPLOYEE" FunctionName="LABOModel.Store.GET_JOB_EMPLOYEE">
             <ResultMapping>
               <ComplexTypeMapping TypeName="LABOModel.GET_JOB_EMPLOYEE_Result">
@@ -963,47 +1002,10 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
                 <ScalarProperty Name="toUserId" ColumnName="toUserId" />
                 <ScalarProperty Name="fromUserName" ColumnName="fromUserName" />
                 <ScalarProperty Name="EmplyeeFeePaymentStatus" ColumnName="EmplyeeFeePaymentStatus" />
+                <ScalarProperty Name="BraintreeStatus" ColumnName="BraintreeStatus" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="dashboard_count" FunctionName="LABOModel.Store.dashboard_count">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="LABOModel.dashboard_count_Result">
-                <ScalarProperty Name="TotalAllUsers" ColumnName="TotalAllUsers" />
-                <ScalarProperty Name="TotalActiveUsers" ColumnName="TotalActiveUsers" />
-                <ScalarProperty Name="TotalBlockedUsers" ColumnName="TotalBlockedUsers" />
-                <ScalarProperty Name="TotalClients" ColumnName="TotalClients" />
-                <ScalarProperty Name="ActiveClients" ColumnName="ActiveClients" />
-                <ScalarProperty Name="PendingClients" ColumnName="PendingClients" />
-                <ScalarProperty Name="BlockedClients" ColumnName="BlockedClients" />
-                <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
-                <ScalarProperty Name="ActiveEmployees" ColumnName="ActiveEmployees" />
-                <ScalarProperty Name="PendingEmployees" ColumnName="PendingEmployees" />
-                <ScalarProperty Name="BlockedEmployees" ColumnName="BlockedEmployees" />
-                <ScalarProperty Name="TotalJobs" ColumnName="TotalJobs" />
-                <ScalarProperty Name="TotalActiveJobs" ColumnName="TotalActiveJobs" />
-                <ScalarProperty Name="TotalInActiveJobs" ColumnName="TotalInActiveJobs" />
-                <ScalarProperty Name="TotalPendingJobs" ColumnName="TotalPendingJobs" />
-                <ScalarProperty Name="TotalApprovedJobs" ColumnName="TotalApprovedJobs" />
-                <ScalarProperty Name="TotalRequestedJobs" ColumnName="TotalRequestedJobs" />
-                <ScalarProperty Name="TotalProposalJobs" ColumnName="TotalProposalJobs" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="tbl_JobPayment">
-            <EntityTypeMapping TypeName="LABOModel.tbl_JobPayment">
-              <MappingFragment StoreEntitySet="tbl_JobPayment">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
-                <ScalarProperty Name="Pk_JobPaymentId" ColumnName="Pk_JobPaymentId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

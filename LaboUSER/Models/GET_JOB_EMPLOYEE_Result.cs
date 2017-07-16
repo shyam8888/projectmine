@@ -55,5 +55,6 @@ namespace LaboUSER.Models
         public Nullable<System.Guid> toUserId { get; set; }
         public string fromUserName { get; set; }
         public string EmplyeeFeePaymentStatus { get; set; }
+        public string BraintreeStatus { get; set; }
     }
 }

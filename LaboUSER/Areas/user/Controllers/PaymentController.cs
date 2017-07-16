@@ -42,7 +42,7 @@ namespace LaboUSER.Areas.user.Controllers
                     SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("select * from [dbo].[tbl_JobPayment] where Fk_JobId=" + jobid + " and UserId='" + userid + "';", conn);
+                    SqlCommand cmd = new SqlCommand("select * from [vineshnilesh888].[tbl_JobPayment] where Fk_JobId=" + jobid + " and UserId='" + userid + "';", conn);
                     // create data adapter
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     // this will query your database and return the result to your datatable
@@ -54,7 +54,7 @@ namespace LaboUSER.Areas.user.Controllers
                         //insert into the job payment table...!!!
                         Decimal companyFee = Convert.ToDecimal("2.00");
                         conn.Open();
-                        SqlCommand cmdInsert = new SqlCommand("insert into [dbo].[tbl_JobPayment] (Fk_JobId,UserId,Amount) values(" + jobid + ",'" + userid + "'," + companyFee + ");", conn);
+                        SqlCommand cmdInsert = new SqlCommand("insert into [vineshnilesh888].[tbl_JobPayment] (Fk_JobId,UserId,Amount) values(" + jobid + ",'" + userid + "'," + companyFee + ");", conn);
                         cmdInsert.ExecuteNonQuery();
                         conn.Close();
                         Console.WriteLine("Inserting Data Successfully");
@@ -112,6 +112,12 @@ namespace LaboUSER.Areas.user.Controllers
             if (result.IsSuccess())
             {
                 Transaction transaction = result.Target;
+                SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
+                conn.Open();
+                string status = "success";
+                SqlCommand cmdUpdate = new SqlCommand("update [vineshnilesh888].[tbl_JobPayment] SET TransactionId='" + transaction.Id + "',PaymentStatus='" + transaction.Status + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
+                cmdUpdate.ExecuteNonQuery();
+                conn.Close();
                 return RedirectToAction("checkout");
             }
             else if (result.Transaction != null)
@@ -127,6 +133,12 @@ namespace LaboUSER.Areas.user.Controllers
                     errorMessages += "Error: " + (int)error.Code + " - " + error.Message + "\n";
                 }
                 TempData["Flash"] = errorMessages;
+                SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
+                conn.Open();
+                string status = "success";
+                SqlCommand cmdUpdate = new SqlCommand("update [vineshnilesh888].[tbl_JobPayment] SET PaymentStatus='" + errorMessages + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
+                cmdUpdate.ExecuteNonQuery();
+                conn.Close();
                 return RedirectToAction("checkout");
             }
 
@@ -142,7 +154,7 @@ namespace LaboUSER.Areas.user.Controllers
                 SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
                 conn.Open();
                 string status = "success";
-                SqlCommand cmdUpdate = new SqlCommand("update [dbo].[tbl_JobPayment] SET TransactionId='" + id + "',PaymentStatus='" + transaction.Status + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
+                SqlCommand cmdUpdate = new SqlCommand("update [vineshnilesh888].[tbl_JobPayment] SET TransactionId='" + id + "',PaymentStatus='" + transaction.Status + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
                 cmdUpdate.ExecuteNonQuery();
                 conn.Close();
             }

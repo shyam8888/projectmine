@@ -44,19 +44,6 @@ namespace LaboUSER.Models
         public DbSet<tbl_JobEmployees> tbl_JobEmployees { get; set; }
         public DbSet<tbl_JobPayment> tbl_JobPayment { get; set; }
     
-        public virtual ObjectResult<GET_JOB_EMPLOYEE_Result> GET_JOB_EMPLOYEE(Nullable<int> jobid, Nullable<System.Guid> userid)
-        {
-            var jobidParameter = jobid.HasValue ?
-                new ObjectParameter("jobid", jobid) :
-                new ObjectParameter("jobid", typeof(int));
-    
-            var useridParameter = userid.HasValue ?
-                new ObjectParameter("userid", userid) :
-                new ObjectParameter("userid", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_JOB_EMPLOYEE_Result>("GET_JOB_EMPLOYEE", jobidParameter, useridParameter);
-        }
-    
         public virtual ObjectResult<dashboard_count_Result> dashboard_count(string type, Nullable<System.Guid> userid)
         {
             var typeParameter = type != null ?
@@ -68,6 +55,19 @@ namespace LaboUSER.Models
                 new ObjectParameter("userid", typeof(System.Guid));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<dashboard_count_Result>("dashboard_count", typeParameter, useridParameter);
+        }
+    
+        public virtual ObjectResult<GET_JOB_EMPLOYEE_Result> GET_JOB_EMPLOYEE(Nullable<int> jobid, Nullable<System.Guid> userid)
+        {
+            var jobidParameter = jobid.HasValue ?
+                new ObjectParameter("jobid", jobid) :
+                new ObjectParameter("jobid", typeof(int));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GET_JOB_EMPLOYEE_Result>("GET_JOB_EMPLOYEE", jobidParameter, useridParameter);
         }
     }
 }

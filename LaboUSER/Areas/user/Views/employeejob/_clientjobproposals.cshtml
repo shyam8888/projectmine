@@ -29,7 +29,7 @@
                                 <i class="material-icons md-dark pmd-sd">visibility</i><br>
                                 view
                             </a>
-                            @if (@item.EmplyeeFeePaymentStatus == "Approved")
+                            @if (@item.EmplyeeFeePaymentStatus == "Approved" && @item.BraintreeStatus!= "submitted_for_settlement")
                             {
 
                                 string userid = LaboUSER.Areas.user.Models.EncrytDecrypt.passwordEncrypt(LaboUSER.Areas.user.clsSession.UserID.ToString(), true);
