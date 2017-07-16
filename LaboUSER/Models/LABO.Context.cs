@@ -34,7 +34,6 @@ namespace LaboUSER.Models
         public DbSet<tbl_ContactUs> tbl_ContactUs { get; set; }
         public DbSet<tbl_CountryMaster> tbl_CountryMaster { get; set; }
         public DbSet<tbl_JobMessage> tbl_JobMessage { get; set; }
-        public DbSet<tbl_JobPayment> tbl_JobPayment { get; set; }
         public DbSet<tbl_Jobs> tbl_Jobs { get; set; }
         public DbSet<tbl_PagePermission> tbl_PagePermission { get; set; }
         public DbSet<tbl_Roles> tbl_Roles { get; set; }
@@ -43,6 +42,7 @@ namespace LaboUSER.Models
         public DbSet<tbl_Users> tbl_Users { get; set; }
         public DbSet<view_user_job> view_user_job { get; set; }
         public DbSet<tbl_JobEmployees> tbl_JobEmployees { get; set; }
+        public DbSet<tbl_JobPayment> tbl_JobPayment { get; set; }
     
         public virtual ObjectResult<GET_JOB_EMPLOYEE_Result> GET_JOB_EMPLOYEE(Nullable<int> jobid, Nullable<System.Guid> userid)
         {

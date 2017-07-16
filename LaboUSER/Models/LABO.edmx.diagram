@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="LABOModel.tbl_ContactUs" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LABOModel.tbl_CountryMaster" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LABOModel.tbl_JobMessage" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LABOModel.tbl_JobPayment" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LABOModel.tbl_Jobs" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LABOModel.tbl_PagePermission" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LABOModel.tbl_Roles" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
@@ -22,6 +21,7 @@
         <AssociationConnector Association="LABOModel.FK_StateMaster_CountryMaster" ManuallyRouted="false" />
         <EntityTypeShape EntityType="LABOModel.view_user_job" Width="1.5" PointX="11.375" PointY="4.75" />
         <EntityTypeShape EntityType="LABOModel.tbl_JobEmployees" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LABOModel.tbl_JobPayment" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

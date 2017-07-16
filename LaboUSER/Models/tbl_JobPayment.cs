@@ -16,7 +16,7 @@ namespace LaboUSER.Models
     {
         public long Pk_JobPaymentId { get; set; }
         public Nullable<long> Fk_JobId { get; set; }
-        public Nullable<long> UserId { get; set; }
+        public Nullable<System.Guid> UserId { get; set; }
         public Nullable<decimal> Amount { get; set; }
         public string TransactionId { get; set; }
         public string PaymentStatus { get; set; }

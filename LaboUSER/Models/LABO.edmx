@@ -79,19 +79,6 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="tbl_JobPayment">
-          <Key>
-            <PropertyRef Name="Pk_JobPaymentId" />
-          </Key>
-          <Property Name="Pk_JobPaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Fk_JobId" Type="bigint" />
-          <Property Name="UserId" Type="bigint" />
-          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="TransactionId" Type="nvarchar(max)" />
-          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
-          <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="ModifiedDate" Type="datetime" />
-        </EntityType>
         <EntityType Name="tbl_Jobs">
           <Key>
             <PropertyRef Name="Pk_JobId" />
@@ -197,6 +184,19 @@
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="tbl_JobPayment">
+          <Key>
+            <PropertyRef Name="Pk_JobPaymentId" />
+          </Key>
+          <Property Name="Pk_JobPaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_JobId" Type="bigint" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionId" Type="nvarchar(max)" />
+          <Property Name="PaymentStatus" Type="nvarchar(max)" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'hardyhat.vineshnilesh888.view_user_job' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="view_user_job">
@@ -275,13 +275,13 @@ warning 6002: The table/view 'hardyhat.vineshnilesh888.view_user_job' does not h
           <EntitySet Name="tbl_CountryMaster" EntityType="Self.tbl_CountryMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_JobEmployees" EntityType="Self.tbl_JobEmployees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_JobMessage" EntityType="Self.tbl_JobMessage" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="tbl_JobPayment" EntityType="Self.tbl_JobPayment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Jobs" EntityType="Self.tbl_Jobs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_PagePermission" EntityType="Self.tbl_PagePermission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Setting" EntityType="Self.tbl_Setting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_StateMaster" EntityType="Self.tbl_StateMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_JobPayment" EntityType="Self.tbl_JobPayment" Schema="vineshnilesh888" store:Type="Tables" />
           <EntitySet Name="view_user_job" EntityType="Self.view_user_job" store:Type="Views" store:Schema="vineshnilesh888">
             <DefiningQuery>SELECT 
 [view_user_job].[Pk_UserId] AS [Pk_UserId], 
@@ -390,19 +390,6 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserId" Type="Guid" />
           <Property Name="IsActive" Type="Boolean" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="tbl_JobPayment">
-          <Key>
-            <PropertyRef Name="Pk_JobPaymentId" />
-          </Key>
-          <Property Name="Pk_JobPaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fk_JobId" Type="Int64" />
-          <Property Name="UserId" Type="Int64" />
-          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -542,7 +529,6 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           <EntitySet Name="tbl_ContactUs" EntityType="Self.tbl_ContactUs" />
           <EntitySet Name="tbl_CountryMaster" EntityType="Self.tbl_CountryMaster" />
           <EntitySet Name="tbl_JobMessage" EntityType="Self.tbl_JobMessage" />
-          <EntitySet Name="tbl_JobPayment" EntityType="Self.tbl_JobPayment" />
           <EntitySet Name="tbl_Jobs" EntityType="Self.tbl_Jobs" />
           <EntitySet Name="tbl_PagePermission" EntityType="Self.tbl_PagePermission" />
           <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" />
@@ -567,6 +553,7 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
             <Parameter Name="type" Mode="In" Type="String" />
             <Parameter Name="userid" Mode="In" Type="Guid" />
           </FunctionImport>
+          <EntitySet Name="tbl_JobPayment" EntityType="LABOModel.tbl_JobPayment" />
         </EntityContainer>
         <EntityType Name="view_user_job">
           <Key>
@@ -683,6 +670,19 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
           <Property Type="Int32" Name="TotalRequestedJobs" Nullable="false" />
           <Property Type="Int32" Name="TotalProposalJobs" Nullable="false" />
         </ComplexType>
+        <EntityType Name="tbl_JobPayment">
+          <Key>
+            <PropertyRef Name="Pk_JobPaymentId" />
+          </Key>
+          <Property Name="Pk_JobPaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_JobId" Type="Int64" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -749,20 +749,6 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
                 <ScalarProperty Name="Message" ColumnName="Message" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_JobPayment">
-            <EntityTypeMapping TypeName="LABOModel.tbl_JobPayment">
-              <MappingFragment StoreEntitySet="tbl_JobPayment">
-                <ScalarProperty Name="Pk_JobPaymentId" ColumnName="Pk_JobPaymentId" />
-                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
-                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
               </MappingFragment>
@@ -1004,6 +990,20 @@ FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="tbl_JobPayment">
+            <EntityTypeMapping TypeName="LABOModel.tbl_JobPayment">
+              <MappingFragment StoreEntitySet="tbl_JobPayment">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="Pk_JobPaymentId" ColumnName="Pk_JobPaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
