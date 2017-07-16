@@ -1,0 +1,266 @@
+﻿@model LaboUSER.Models.tbl_Users
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Areas/user/Views/Shared/_LayoutSignup.cshtml";
+}
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Muli:300normal,300italic,400normal,400italic|Open+Sans:400normal|Lato:400normal|Roboto:400normal|Oswald:400normal|Playfair+Display:400normal|Ubuntu:400normal|PT+Sans:400normal|Merriweather:400normal|Abril+Fatface:400normal|Tangerine:400normal&subset=all">
+<section class="row component-section sign_up">
+    <!-- Text fields code, example -->
+    <h1>Sign up for a free account</h1>
+    <div class="col-md-10">
+        <div class="component-box">
+
+            <!-- Text fields example -->
+            <div class="row">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <div class="col-lg-12 custom-col-9">
+                        <div class="pmd-card pmd-z-depth pmd-card-custom-form">
+                            <div class="pmd-card-body">
+                                <div data-provides="fileinput" class="fileinput fileinput-new col-lg-3">
+                                    <div data-trigger="fileinput" class="fileinput-preview thumbnail img-circle img-responsive">
+                                        <img src="/themes/images/user_add_picture.png">
+                                    </div>
+                                    <div class="action-button">
+                                        <span class="btn btn-default btn-raised btn-file ripple-effect">
+                                            <span class="fileinput-new"><i class="material-icons md-light pmd-xs">add</i></span>
+                                            <span class="fileinput-exists"><i class="material-icons md-light pmd-xs">mode_edit</i></span>
+                                            <input type="file" name="profilephoto" accept="image/*">
+                                        </span>
+                                        <a data-dismiss="fileinput" class="btn btn-default btn-raised btn-file ripple-effect fileinput-exists" href="javascript:void(0);"><i class="material-icons md-light pmd-xs">close</i></a>
+                                    </div>
+                                </div>
+                                @*<h3 class="heading">Personal Information</h3>*@
+                                <div class="row">
+
+                                    <fieldset>
+                                        <div class="col-sm-12">
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">First Name</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @style = "color:red;" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">Middle Name</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.MidleName, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.MidleName, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">Last Name</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group pmd-textfield col-sm-6">
+                                                <label class="col-sm-12 control-label">State</label>
+                                                <div class="col-sm-12">
+                                                    @Html.DropDownListFor(model => model.Fk_StateId, (IEnumerable<SelectListItem>)ViewBag.StateList, "-Select State-", new { @class = "select-with-search pmd-select2 form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Fk_StateId, "", new { @style = "color:red;" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-6">
+                                                <label class="col-sm-12 control-label">City</label>
+                                                <div class="col-sm-12">
+                                                    @Html.DropDownListFor(model => model.Fk_CityId, Enumerable.Empty<SelectListItem>(), "-Select City-", new { @class = "select-with-search pmd-select2 form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Fk_CityId, "", new { @style = "color:red;" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group pmd-textfield col-sm-12">
+                                            <label class="col-sm-12 control-label" for="u_fname">Gender</label>
+                                            <div class="col-sm-12">
+                                                <label class="radio-inline pmd-radio">
+                                                    @Html.RadioButtonFor(model => model.Gender, "Male", new { @checked = "checked" }) <span>Male</span>
+                                                </label>
+                                                <label class="radio-inline pmd-radio">
+                                                    @Html.RadioButtonFor(model => model.Gender, "Female") <span>Female</span>
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.Gender, "", new { @style = "color:red" })
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">Contact Number</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.ContactNo, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">Postal Code</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.ZipCode, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.ZipCode, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-4">
+                                                <label class="col-sm-12 control-label" for="u_fname">Email</label>
+                                                <div class="col-sm-12">
+                                                    @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group pmd-textfield col-sm-6">
+                                                <label class="col-sm-12 control-label" for="u_fname">Password</label>
+                                                <div class="col-sm-12">
+                                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group pmd-textfield col-sm-6">
+                                                <label class="col-sm-12 control-label" for="u_fname">Confirm Password</label>
+                                                <div class="col-sm-12">
+                                                    @Html.PasswordFor(model => model.cpassword, new { @class = "form-control empty" })
+                                                    @Html.ValidationMessageFor(model => model.cpassword, "", new { @style = "color:red" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group pmd-textfield col-sm-12">
+                                            <label class="col-sm-12 control-label" for="u_fname">Address: (permanent)</label>
+                                            <div class="col-sm-12">
+                                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control empty" })
+                                                @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color:red" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="pmd-card pmd-z-depth2 pmd-card-custom-form">
+                                                <div class="pmd-card-body row">
+                                                    <div class="group-fields clearfix col-sm-4">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group pmd-textfield">
+                                                                <label for="regular1" class="control-label">
+                                                                    Id Issued By Government
+                                                                </label>
+                                                                <input type="file" name="Gov_IssueId" required />
+                                                                @Html.ValidationMessageFor(model => model.Gov_IssueId, "", new { @style = "color:red" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields clearfix col-sm-4">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group pmd-textfield">
+                                                                <label for="regular2" class="control-label">
+                                                                    Eligible Work Id
+                                                                </label>
+                                                                <input type="file" name="EligibleWorkId" required />
+                                                                @Html.ValidationMessageFor(model => model.EligibleWorkId, "", new { @style = "color:red" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields clearfix col-sm-4">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group pmd-textfield">
+                                                                <label for="regular3" class="control-label">
+                                                                    Police Verification
+                                                                </label>
+                                                                <input type="file" name="PoliceVerification" required />
+                                                                @Html.ValidationMessageFor(model => model.PoliceVerification, "", new { @style = "color:red" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="group-fields clearfix col-sm-4">
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="form-group">
+                                                                <div class="checkbox pull-left">
+                                                                    <label class="pmd-checkbox checkbox-pmd-ripple-effect">
+                                                                        @Html.CheckBoxFor(model=>model.terms) <span class="pmd-checkbox-label">&nbsp;</span>
+                                                                        <span class="pmd-checkbox">Accept <a data-target="#complete-dialog" data-toggle="modal">Terms & condition</a> </span>
+                                                                         @Html.ValidationMessageFor(model => model.terms, "", new { @style = "color:red" })
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group btns margin-bot-30 col-sm-12">
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-primary pmd-ripple-effect" id="btnFormSubmit">Signup</button>
+                                                @*<a class="btn btn-default btn-link pmd-ripple-effect" href="/">Cancel</a>*@
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="type" id="formType" />
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end Text fields example -->
+                </form>
+            </div>
+        </div>
+        <!--end Text fields code, example -->
+    </div>
+</section>
+<div tabindex="-1" class="modal fade" id="complete-dialog" style="display: none;" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="pmd-card-title-text">Terms & Condition</h2>
+			</div>
+			<div class="modal-body">
+				<p>Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running. </p>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script src="~/assets/js/masking.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#ContactNo').mask("(999) 999-9999");
+        $('#ZipCode').mask("a9a-9a9");
+        $(".select-with-search").select2({
+            theme: "bootstrap"
+        });
+        $("#Fk_StateId").change(function () {
+            var idModel = $(this).val();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.RouteUrl("LoadCity"))",
+                data: { "id": idModel },
+                success: function (data) {
+                    var select = $("#Fk_CityId");
+                    select.empty();
+                    select.append($('<option/>', {
+                        value: 0,
+                        text: "-Select-"
+                    }));
+                    $.each(data, function (index, itemData) {
+
+                        select.append($('<option/>', {
+                            value: itemData.Value,
+                            text: itemData.Text
+                        }));
+                    });
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+
+                }
+            });
+        });
+
+    });
+    if (window.location.href.indexOf('Employer') != -1 || window.location.href.indexOf('Client') != -1 || window.location.href.indexOf('employer') != -1 || window.location.href.indexOf('client') != -1) {
+        if (window.location.href.indexOf('Employer') != -1 || window.location.href.indexOf('employer') != -1) {
+            $('#formType').val("Employer");
+        }
+        if (window.location.href.indexOf('Client') != -1 || window.location.href.indexOf('client') != -1) {
+            $('#formType').val("Client");
+        }
+    }
+    else {
+        $('#btnFormSubmit').remove();
+    }
+</script>
+

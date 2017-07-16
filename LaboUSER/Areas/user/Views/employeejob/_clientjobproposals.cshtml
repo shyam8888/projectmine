@@ -1,0 +1,78 @@
+﻿@model List<LaboUSER.Models.GET_JOB_EMPLOYEE_Result>
+
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblClientJobProposalDatatable">
+            <thead>
+                <tr>
+                    <th> Employee Name </th>
+                    <th> Job Title </th>
+
+                    <th> Job Category </th>
+                    <th> No.Of Needed </th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.fromUserName</td>
+                        <td>@item.JobTitle</td>
+                        <td>@item.JobCategory</td>
+                        <td>@item.NoOfEmployeeNeeded</td>
+                        <td>@item.EmplyeeFeePaymentStatus</td>
+                        <td>@item.Amount</td>
+                        <td class="pmd-table-row-action">
+                            <a href="/User/employeejob/viewjobproposal?id=@item.Fk_JobId&userid=@item.fromUserId" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                                <i class="material-icons md-dark pmd-sd">visibility</i><br>
+                                view
+                            </a>
+                            @if (@item.EmplyeeFeePaymentStatus == "Approved")
+                            {
+                                @{ 
+                                    string userid = new LaboUSER.Areas.user.Models.DataEncryptor().EncryptString(LaboUSER.Areas.user.clsSession.UserID.ToString());
+                                    string jobid = new LaboUSER.Areas.user.Models.DataEncryptor().EncryptString(Convert.ToString(@item.Fk_JobId));
+                                }
+                                <a href="http://hardyhat.com/user/payment/checkout?userid=@userid &jobid=@jobid" class="btn btn-sm pmd-btn-raised pmd-ripple-effect btn-success">Pay money</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#tblClientJobProposalDatatable').DataTable({
+                responsive: false,
+                order: [1, 'asc'],
+                bFilter: true,
+                bLengthChange: true,
+                pagingType: "simple",
+                "paging": true,
+                "searching": true,
+                "language": {
+                    "info": " _START_ - _END_ of _TOTAL_ ",
+                    "sLengthMenu": "<span class='custom-select-title'>Rows per page:</span> <span class='custom-select'> _MENU_ </span>",
+                    "sSearch": "",
+                    "sSearchPlaceholder": "Search",
+                    "paginate": {
+                        "sNext": " ",
+                        "sPrevious": " "
+                    },
+                },
+                dom:
+        "<'pmd-card-title'<'data-table-title'><'search-paper pmd-textfield'f>>" +
+        "<'custom-select-info'<'custom-select-item'><'custom-select-action'>>" +
+        "<'row'<'col-sm-12'tr>>" +
+        "<'pmd-card-footer' <'pmd-datatable-pagination' l i p>>",
+            });
+            $('.custom-select-info').hide();
+
+        });
+    </script>

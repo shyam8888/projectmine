@@ -1,0 +1,180 @@
+﻿@{
+    ViewBag.Title = "ViewEmployee";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<!--content area start-->
+
+<!--tab start-->
+<div class="container-fluid full-width-container about">
+    <!-- Title -->
+    <h1 class="section-title" id="services">
+        <span>@Model.FirstName Profile</span>
+    </h1>
+    <!-- End Title -->
+
+    <!--breadcrum start-->
+    <ol class="breadcrumb text-left">
+        <li><a href="/User/employeelist/index">Employee List</a></li>
+        <li class="active">@Model.FirstName Profile</li>
+    </ol>
+    <!--breadcrum end-->
+
+    <div class="page-content profile-edit section-custom">
+        <div class="pmd-card pmd-z-depth">
+            <div class="pmd-card-body">
+                <div class="row">
+
+                    <div data-provides="fileinput" class="fileinput fileinput-new col-lg-3">
+                        <div data-trigger="fileinput" class="fileinput-preview thumbnail img-circle img-responsive">
+                            @if (Model.UserImage != null && Model.UserImage != "")
+                            {
+                                <img src="/profile_photo/@Model.UserImage">
+                            }
+                            else
+                            {
+                                <img src="/Images/no_profile.png">
+                            }
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-9 custom-col-9">
+                        <h3 class="heading">Personal Information</h3>
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">First Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.FirstName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Middle Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.MidleName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Last Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.LastName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Email</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.EmailId</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Gender</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.Gender</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Contact No</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.ContactNo</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Address</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.Address</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Country</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.Country</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">City</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.City</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Zip Code</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.ZipCode</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Birth Date</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.BirthDate</strong></p>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+                        </div>
+                        <h3 class="heading">Document Uploaded</h3>
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="control-label col-sm-3" for="u_password">Id Issued By Government</label>
+                                        <div class="col-sm-9">
+                                            @if (Model.Gov_IssueId != null)
+                                            {
+                                                <a href="/user_doc/@Model.Gov_IssueId"+".pdf" target="_blank">Governemnt Issued Id File </a>
+                                            }
+                                            else
+                                            {
+                                                <h4>Not Uploaded</h4>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="control-label col-sm-3" for="u_password">Eligible Work Id</label>
+                                        <div class="col-sm-9">
+                                            @if (Model.EligibleWorkId != null)
+                                            {
+                                                <a href="/user_doc/@Model.EligibleWorkId"+".pdf" target="_blank">Eligible Work Id</a>
+                                            }
+                                            else
+                                            {
+                                                <h4>Not Uploaded </h4>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="control-label col-sm-3" for="u_password">Police Verification</label>
+                                        <div class="col-sm-9">
+                                            @if (Model.PoliceVerification != null)
+                                            {
+                                                <a href="/user_doc/@Model.PoliceVerification"+".pdf" target="_blank">Police Verification FIle</a>
+                                            }
+                                            else
+                                            {
+                                                <h4>Not Uploaded </h4>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group btns">
+                                        <div class="col-sm-9 col-sm-offset-3">
+                                            <a href="/EmployeeList/activate/@Model.Pk_UserId" class="btn pmd-ripple-effect btn-success">Active </a>
+                                            <a href="/EmployeeList/block/@Model.Pk_UserId" class="btn pmd-ripple-effect btn-danger">Block </a>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- tab end -->
+
+<!-- content area end -->

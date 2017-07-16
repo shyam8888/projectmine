@@ -1,0 +1,107 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Propeller_Admin_Dashboard">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+
+    <title>Hardy Hat - Signup</title>
+    @*<link rel="shortcut icon" type="image/x-icon" href="/themes/images/favicon.ico">*@
+    <link rel="shortcut icon" href="~/images/ico/fv.jpg">
+
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <!-- Propeller css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/propeller.min.css">
+
+    <link rel="stylesheet" type="text/css" href="/components/file-upload/css/upload-file.css">
+    <link rel="stylesheet" type="text/css" href="/components/file-upload/css/image-upload.css">
+
+    <!-- Select2 css-->
+    <link rel="stylesheet" type="text/css" href="/components/select2/css/select2.min.css" />
+    <link rel="stylesheet" type="text/css" href="/components/select2/css/select2-bootstrap.css" />
+    <!-- Propeller select2 css-->
+    <link rel="stylesheet" type="text/css" href="/components/select2/css/pmd-select2.css" />
+
+    <!-- Propeller theme css-->
+    <link rel="stylesheet" type="text/css" href="/themes/css/propeller-theme.css" />
+
+    <!-- Propeller admin theme css-->
+    <link rel="stylesheet" type="text/css" href="/themes/css/propeller-admin.css">
+    <script src="~/assets/js/jquery-1.12.2.min.js"></script>
+    <link href="~/assets/css/adminstyle.css" rel="stylesheet" />
+</head>
+
+<!-- Styles Ends -->
+
+<body class="SIGN_UP_BG">
+    <!-- Header Starts -->
+    <!--Start Nav bar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
+        <a href="/"><img src="/images/logo.png" style="padding:10px;" alt="logo"></a>
+    </nav>
+    <!--End Nav bar -->
+    <!-- Header Ends -->
+
+
+
+    <!--content area start-->
+    <div id="content" class="pmd-content content-area dashboard ">
+        <!-- Display a success alert at the top-right position of the window -->
+        <button type="button" data-positionx="right" data-positiony="top" data-effect="fadeInUp" data-message="" data-type="success" class="hide btn pmd-ripple-effect btn-success pmd-z-depth pmd-alert-toggle">Alert Success</button>
+
+        <!-- Display an error alert at the top-right position of the window -->
+        <button type="button" data-positionx="right" data-positiony="top" data-effect="fadeInUp" data-message="" data-type="error" class=" hide btn pmd-ripple-effect btn-danger pmd-z-depth pmd-alert-toggle">Alert Error</button>
+        @RenderBody()
+    </div>
+    <!--end content area-->
+
+    <!-- Footer Starts -->
+    <!--footer start-->
+    <footer class="admin-footer">
+        <div class="container-fluid">
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <span class="pmd-card-subtitle-text">Hardy Hat &copy; 2017. All Rights Reserved.</span>
+                    @*<h3 class="pmd-card-subtitle-text">Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank">MIT license.</a></h3>*@
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!--footer end-->
+    <!-- Footer Ends -->
+
+    <!-- Scripts Starts -->
+    <!-- Scripts Starts -->
+
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/propeller.min.js"></script>
+    <script src="~/components/file-upload/js/upload-image.js"></script>
+    <script type="text/javascript" src="/components/select2/js/select2.full.js"></script>
+    <!-- Javascript for Datepicker -->
+    <script type="text/javascript" language="javascript" src="/components/datetimepicker/js/moment-with-locales.js"></script>
+    <script type="text/javascript" language="javascript" src="/components/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        // Linked date and time picker 
+        // start date date and time picker 
+        $('#datepicker-default').datetimepicker();
+        function alert_message(msg, type) {
+            if (type == "success") {
+                $('.btn-success').attr('data-message', msg);
+                $('.btn-success').click();
+            }
+            else if (type = "fail") {
+                $('.btn-danger').attr('data-message', msg);
+                $('.btn-danger').click();
+            }
+        }
+    </script>
+
+</body>
+</html>

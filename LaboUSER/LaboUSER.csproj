@@ -1,0 +1,1606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C39509E1-160F-4185-9700-4E9B8204D0DB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LaboUSER</RootNamespace>
+    <AssemblyName>LaboUSER</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Braintree, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31b586f34d3e96c7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Braintree.3.8.0\lib\net452\Braintree.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\user\Controllers\AdminSettingController.cs" />
+    <Compile Include="Areas\user\Controllers\errorController.cs" />
+    <Compile Include="Areas\user\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\user\Controllers\ClientListController.cs" />
+    <Compile Include="Areas\user\Controllers\ContactUsController.cs" />
+    <Compile Include="Areas\user\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\user\Controllers\employeejobController.cs" />
+    <Compile Include="Areas\user\Controllers\EmployeeListController.cs" />
+    <Compile Include="Areas\user\Controllers\HomeController.cs" />
+    <Compile Include="Areas\user\Controllers\JobController.cs" />
+    <Compile Include="Areas\user\Controllers\LoginController.cs" />
+    <Compile Include="Areas\user\Controllers\RegisterController.cs" />
+    <Compile Include="Areas\user\filter\SessionCheckFilter.cs" />
+    <Compile Include="Areas\user\Models\clsSession.cs" />
+    <Compile Include="Areas\user\Models\DataEncryptor.cs" />
+    <Compile Include="Areas\user\Models\loginmodel.cs" />
+    <Compile Include="Areas\user\Models\payment.cs" />
+    <Compile Include="Areas\user\Models\userjob.cs" />
+    <Compile Include="Areas\user\userAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController-.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\DashboardHomeController.cs" />
+    <Compile Include="Controllers\PrivacyController.cs" />
+    <Compile Include="Controllers\SentEmailController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\TermsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BraintreeConfiguration.cs" />
+    <Compile Include="Models\CityMaster.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryMaster.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dashboard_count_Result.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GET_JOB_EMPLOYEE_Result.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IBraintreeConfiguration.cs" />
+    <Compile Include="Models\LABO.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LABO.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LABO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LABO.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LABO.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateMaster.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_ContactUs.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_CountryMaster.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_JobEmployees.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_JobMessage.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_JobPayment.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Jobs.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_PagePermission.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Roles.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Setting.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_StateMaster.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Users.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\view_user_job.cs">
+      <DependentUpon>LABO.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\adminstyle.css" />
+    <Content Include="assets\css\bootstrap.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\propeller-global.css" />
+    <Content Include="assets\css\propeller.css" />
+    <Content Include="assets\css\propeller.min.css" />
+    <Content Include="assets\fonts\roboto\Roboto-Black-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-BlackItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Bold-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-BoldItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Italic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Light-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-LightItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Medium-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-MediumItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Regular-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-Thin-webfont.svg" />
+    <Content Include="assets\fonts\roboto\Roboto-ThinItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\roboto.css" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Bold-webfont.svg" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-BoldItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Italic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Light-webfont.svg" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-LightItalic-webfont.svg" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Regular-webfont.svg" />
+    <Content Include="assets\images\avatar-icon-40x40.png" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\profile-pic.png" />
+    <Content Include="assets\images\Propeller_FB_Covers.jpg" />
+    <Content Include="assets\images\Twitter_Open_Graph.jpg" />
+    <Content Include="assets\js\bootstrap.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\demo.js" />
+    <Content Include="assets\js\jquery-1.12.2.min.js" />
+    <Content Include="assets\js\jquery.creditCardValidator.js" />
+    <Content Include="assets\js\jquery.js" />
+    <Content Include="assets\js\masking.js" />
+    <Content Include="assets\js\propeller.js" />
+    <Content Include="assets\js\propeller.min.js" />
+    <Content Include="components\accordion\accordion.html" />
+    <Content Include="components\accordion\css\accordion.css" />
+    <Content Include="components\accordion\js\accordion.js" />
+    <Content Include="components\accordion\snippets\accordion-colored-icon.html" />
+    <Content Include="components\accordion\snippets\accordion-dtheme.html" />
+    <Content Include="components\accordion\snippets\accordion-expandable-all.html" />
+    <Content Include="components\accordion\snippets\accordion-expandable-all.js" />
+    <Content Include="components\accordion\snippets\accordion-material.html" />
+    <Content Include="components\accordion\snippets\accordion-scalable.css" />
+    <Content Include="components\accordion\snippets\accordion-scalable.html" />
+    <Content Include="components\accordion\snippets\accordion-simple-bootstrap.html" />
+    <Content Include="components\accordion\snippets\accordion-with-icon.html" />
+    <Content Include="components\accordion\snippets\accordion.css" />
+    <Content Include="components\accordion\snippets\accordion.js" />
+    <Content Include="components\accordion\snippets\bootstrap-basic.css" />
+    <Content Include="components\accordion\snippets\bootstrap-basic.js" />
+    <Content Include="components\accordion\snippets\events.js" />
+    <Content Include="components\alert\alerts.html" />
+    <Content Include="components\alert\css\alert.css" />
+    <Content Include="components\alert\js\alert.js" />
+    <Content Include="components\alert\snippets\alert-behaviour-action.css" />
+    <Content Include="components\alert\snippets\alert-behaviour-action.html" />
+    <Content Include="components\alert\snippets\alert-behaviour.html" />
+    <Content Include="components\alert\snippets\alert-dismissing.html" />
+    <Content Include="components\alert\snippets\alert-link.css" />
+    <Content Include="components\alert\snippets\alert-link.html" />
+    <Content Include="components\alert\snippets\alert-link.js" />
+    <Content Include="components\alert\snippets\alert-type.css" />
+    <Content Include="components\alert\snippets\alert-type.html" />
+    <Content Include="components\alert\snippets\alerts.css" />
+    <Content Include="components\alert\snippets\alerts.js" />
+    <Content Include="components\alert\snippets\events.js" />
+    <Content Include="components\badge\badge.html" />
+    <Content Include="components\badge\css\badge.css" />
+    <Content Include="components\badge\snippets\badge-notification.css" />
+    <Content Include="components\badge\snippets\badge-notification.html" />
+    <Content Include="components\badge\snippets\badge-variation.html" />
+    <Content Include="components\badge\snippets\badge.css" />
+    <Content Include="components\badge\snippets\badge.js" />
+    <Content Include="components\badge\snippets\bootstrap-basic.css" />
+    <Content Include="components\badge\snippets\chips.css" />
+    <Content Include="components\badge\snippets\chips.html" />
+    <Content Include="components\button\button.html" />
+    <Content Include="components\button\css\button.css" />
+    <Content Include="components\button\js\ripple-effect.js" />
+    <Content Include="components\button\snippets\bootstrap-basic.css" />
+    <Content Include="components\button\snippets\button-circle-flat.html" />
+    <Content Include="components\button\snippets\button-circle-raised.html" />
+    <Content Include="components\button\snippets\button-circle.html" />
+    <Content Include="components\button\snippets\button-default.html" />
+    <Content Include="components\button\snippets\button-flat.html" />
+    <Content Include="components\button\snippets\button-groups-combine.html" />
+    <Content Include="components\button\snippets\button-groups-justified.html" />
+    <Content Include="components\button\snippets\button-groups-series.html" />
+    <Content Include="components\button\snippets\button-outline.html" />
+    <Content Include="components\button\snippets\button-propeller.html" />
+    <Content Include="components\button\snippets\button-raised.html" />
+    <Content Include="components\button\snippets\button-sizes-block.html" />
+    <Content Include="components\button\snippets\button-sizes.html" />
+    <Content Include="components\button\snippets\button-with-icon.css" />
+    <Content Include="components\button\snippets\button.css" />
+    <Content Include="components\button\snippets\button.js" />
+    <Content Include="components\card\card.html" />
+    <Content Include="components\card\css\card.css" />
+    <Content Include="components\card\js\jquery.masonry.min.js" />
+    <Content Include="components\card\snippets\card-content-blocks.html" />
+    <Content Include="components\card\snippets\card-content-types-1.html" />
+    <Content Include="components\card\snippets\card-content-types-2.html" />
+    <Content Include="components\card\snippets\card-content-types-3.html" />
+    <Content Include="components\card\snippets\card-content-types-4.html" />
+    <Content Include="components\card\snippets\card-content-types-5.html" />
+    <Content Include="components\card\snippets\card-default.html" />
+    <Content Include="components\card\snippets\card.css" />
+    <Content Include="components\card\snippets\card.js" />
+    <Content Include="components\checkbox\checkbox.html" />
+    <Content Include="components\checkbox\css\checkbox.css" />
+    <Content Include="components\checkbox\css\_notes\dwsync.xml" />
+    <Content Include="components\checkbox\js\checkbox.js" />
+    <Content Include="components\checkbox\snippets\checkbox.css" />
+    <Content Include="components\checkbox\snippets\checkbox.html" />
+    <Content Include="components\checkbox\snippets\checkbox.js" />
+    <Content Include="components\checkbox\snippets\inline-checkbox.html" />
+    <Content Include="components\custom-scrollbar\css\jquery.mCustomScrollbar.css" />
+    <Content Include="components\custom-scrollbar\css\mCSB_buttons.png" />
+    <Content Include="components\custom-scrollbar\css\pmd-scrollbar.css" />
+    <Content Include="components\custom-scrollbar\custom-scroll.html" />
+    <Content Include="components\custom-scrollbar\js\jquery.mCustomScrollbar.js" />
+    <Content Include="components\custom-scrollbar\snippets\3d-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\3d-scroll.js" />
+    <Content Include="components\custom-scrollbar\snippets\custom-scroll.css" />
+    <Content Include="components\custom-scrollbar\snippets\custom-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\custom-scroll.js" />
+    <Content Include="components\custom-scrollbar\snippets\hover-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\outside-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\outside-scroll.js" />
+    <Content Include="components\custom-scrollbar\snippets\rounded-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\rounded-scroll.js" />
+    <Content Include="components\custom-scrollbar\snippets\snap-scroll.html" />
+    <Content Include="components\custom-scrollbar\snippets\snap-scroll.js" />
+    <Content Include="components\data-table\css\pmd-datatable.css" />
+    <Content Include="components\data-table\data-table.html" />
+    <Content Include="components\data-table\examples\advanced_init\column_render.html" />
+    <Content Include="components\data-table\examples\advanced_init\complex_header.html" />
+    <Content Include="components\data-table\examples\advanced_init\defaults.html" />
+    <Content Include="components\data-table\examples\advanced_init\dom_multiple_elements.html" />
+    <Content Include="components\data-table\examples\advanced_init\dom_toolbar.html" />
+    <Content Include="components\data-table\examples\advanced_init\dt_events.html" />
+    <Content Include="components\data-table\examples\advanced_init\events_live.html" />
+    <Content Include="components\data-table\examples\advanced_init\footer_callback.html" />
+    <Content Include="components\data-table\examples\advanced_init\html5-data-attributes.html" />
+    <Content Include="components\data-table\examples\advanced_init\html5-data-options.html" />
+    <Content Include="components\data-table\examples\advanced_init\index.html" />
+    <Content Include="components\data-table\examples\advanced_init\language_file.html" />
+    <Content Include="components\data-table\examples\advanced_init\length_menu.html" />
+    <Content Include="components\data-table\examples\advanced_init\object_dom_read.html" />
+    <Content Include="components\data-table\examples\advanced_init\row_callback.html" />
+    <Content Include="components\data-table\examples\advanced_init\row_grouping.html" />
+    <Content Include="components\data-table\examples\advanced_init\sort_direction_control.html" />
+    <Content Include="components\data-table\examples\ajax\custom_data_flat.html" />
+    <Content Include="components\data-table\examples\ajax\custom_data_property.html" />
+    <Content Include="components\data-table\examples\ajax\data\arrays.txt" />
+    <Content Include="components\data-table\examples\ajax\data\arrays_custom_prop.txt" />
+    <Content Include="components\data-table\examples\ajax\data\arrays_subobjects.txt" />
+    <Content Include="components\data-table\examples\ajax\data\objects.txt" />
+    <Content Include="components\data-table\examples\ajax\data\objects_deep.txt" />
+    <Content Include="components\data-table\examples\ajax\data\objects_root_array.txt" />
+    <Content Include="components\data-table\examples\ajax\data\objects_subarrays.txt" />
+    <Content Include="components\data-table\examples\ajax\data\orthogonal.txt" />
+    <Content Include="components\data-table\examples\ajax\deep.html" />
+    <Content Include="components\data-table\examples\ajax\defer_render.html" />
+    <Content Include="components\data-table\examples\ajax\index.html" />
+    <Content Include="components\data-table\examples\ajax\null_data_source.html" />
+    <Content Include="components\data-table\examples\ajax\objects.html" />
+    <Content Include="components\data-table\examples\ajax\objects_subarrays.html" />
+    <Content Include="components\data-table\examples\ajax\orthogonal-data.html" />
+    <Content Include="components\data-table\examples\ajax\simple.html" />
+    <Content Include="components\data-table\examples\api\add_row.html" />
+    <Content Include="components\data-table\examples\api\api_in_init.html" />
+    <Content Include="components\data-table\examples\api\counter_columns.html" />
+    <Content Include="components\data-table\examples\api\form.html" />
+    <Content Include="components\data-table\examples\api\highlight.html" />
+    <Content Include="components\data-table\examples\api\index.html" />
+    <Content Include="components\data-table\examples\api\multi_filter.html" />
+    <Content Include="components\data-table\examples\api\multi_filter_select.html" />
+    <Content Include="components\data-table\examples\api\regex.html" />
+    <Content Include="components\data-table\examples\api\row_details.html" />
+    <Content Include="components\data-table\examples\api\select_row.html" />
+    <Content Include="components\data-table\examples\api\select_single_row.html" />
+    <Content Include="components\data-table\examples\api\show_hide.html" />
+    <Content Include="components\data-table\examples\api\tabs_and_scrolling.html" />
+    <Content Include="components\data-table\examples\basic_init\alt_pagination.html" />
+    <Content Include="components\data-table\examples\basic_init\comma-decimal.html" />
+    <Content Include="components\data-table\examples\basic_init\complex_header.html" />
+    <Content Include="components\data-table\examples\basic_init\dom.html" />
+    <Content Include="components\data-table\examples\basic_init\filter_only.html" />
+    <Content Include="components\data-table\examples\basic_init\flexible_width.html" />
+    <Content Include="components\data-table\examples\basic_init\hidden_columns.html" />
+    <Content Include="components\data-table\examples\basic_init\index.html" />
+    <Content Include="components\data-table\examples\basic_init\language.html" />
+    <Content Include="components\data-table\examples\basic_init\multiple_tables.html" />
+    <Content Include="components\data-table\examples\basic_init\multi_col_sort.html" />
+    <Content Include="components\data-table\examples\basic_init\scroll_x.html" />
+    <Content Include="components\data-table\examples\basic_init\scroll_xy.html" />
+    <Content Include="components\data-table\examples\basic_init\scroll_y.html" />
+    <Content Include="components\data-table\examples\basic_init\scroll_y_dynamic.html" />
+    <Content Include="components\data-table\examples\basic_init\state_save.html" />
+    <Content Include="components\data-table\examples\basic_init\table_sorting.html" />
+    <Content Include="components\data-table\examples\basic_init\zero_configuration.html" />
+    <Content Include="components\data-table\examples\data_sources\ajax.html" />
+    <Content Include="components\data-table\examples\data_sources\dom.html" />
+    <Content Include="components\data-table\examples\data_sources\index.html" />
+    <Content Include="components\data-table\examples\data_sources\js_array.html" />
+    <Content Include="components\data-table\examples\data_sources\server_side.html" />
+    <Content Include="components\data-table\examples\index.html" />
+    <Content Include="components\data-table\examples\plug-ins\api.html" />
+    <Content Include="components\data-table\examples\plug-ins\dom_sort.html" />
+    <Content Include="components\data-table\examples\plug-ins\index.html" />
+    <Content Include="components\data-table\examples\plug-ins\range_filtering.html" />
+    <Content Include="components\data-table\examples\plug-ins\sorting_auto.html" />
+    <Content Include="components\data-table\examples\plug-ins\sorting_manual.html" />
+    <Content Include="components\data-table\examples\resources\demo.css" />
+    <Content Include="components\data-table\examples\resources\demo.js" />
+    <Content Include="components\data-table\examples\resources\details_close.png" />
+    <Content Include="components\data-table\examples\resources\details_open.png" />
+    <Content Include="components\data-table\examples\resources\syntax\shCore.css" />
+    <Content Include="components\data-table\examples\resources\syntax\shCore.js" />
+    <Content Include="components\data-table\examples\server_side\custom_vars.html" />
+    <Content Include="components\data-table\examples\server_side\defer_loading.html" />
+    <Content Include="components\data-table\examples\server_side\ids.html" />
+    <Content Include="components\data-table\examples\server_side\index.html" />
+    <Content Include="components\data-table\examples\server_side\jsonp.html" />
+    <Content Include="components\data-table\examples\server_side\object_data.html" />
+    <Content Include="components\data-table\examples\server_side\pipeline.html" />
+    <Content Include="components\data-table\examples\server_side\post.html" />
+    <Content Include="components\data-table\examples\server_side\row_details.html" />
+    <Content Include="components\data-table\examples\server_side\scripts\mysql.sql" />
+    <Content Include="components\data-table\examples\server_side\scripts\postgres.sql" />
+    <Content Include="components\data-table\examples\server_side\scripts\sqlite.sql" />
+    <Content Include="components\data-table\examples\server_side\scripts\sqlserver.sql" />
+    <Content Include="components\data-table\examples\server_side\select_rows.html" />
+    <Content Include="components\data-table\examples\server_side\simple.html" />
+    <Content Include="components\data-table\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\examples\styling\cell-border.html" />
+    <Content Include="components\data-table\examples\styling\compact.html" />
+    <Content Include="components\data-table\examples\styling\display.html" />
+    <Content Include="components\data-table\examples\styling\foundation.html" />
+    <Content Include="components\data-table\examples\styling\hover.html" />
+    <Content Include="components\data-table\examples\styling\index.html" />
+    <Content Include="components\data-table\examples\styling\jqueryUI.html" />
+    <Content Include="components\data-table\examples\styling\no-classes.html" />
+    <Content Include="components\data-table\examples\styling\order-column.html" />
+    <Content Include="components\data-table\examples\styling\row-border.html" />
+    <Content Include="components\data-table\examples\styling\stripe.html" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.bootstrap.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.dataTables.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.foundation.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.foundation.min.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.jqueryui.css" />
+    <Content Include="components\data-table\extensions\AutoFill\css\autoFill.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\index.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\alwaysAsk.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\columns.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\events.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\fills.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\focus.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\keyTable.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\plugins.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\scrolling.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\AutoFill\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.bootstrap.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.bootstrap.min.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.foundation.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.foundation.min.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.jqueryui.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\autoFill.jqueryui.min.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="components\data-table\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="components\data-table\extensions\AutoFill\License.txt" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.bootstrap.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.dataTables.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.foundation.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.foundation.min.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.jqueryui.css" />
+    <Content Include="components\data-table\extensions\Buttons\css\buttons.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\Buttons\examples\api\addRemove.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\api\enable.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\api\group.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\api\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\api\text.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\columnGroups.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\columns.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\columnsToggle.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\layout.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\restore.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\simple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\column_visibility\text.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\copyi18n.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\filename.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\hidden.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\pdfMessage.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\pdfPage.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\simple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\swfPath.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\flash\tsv.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\columns.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\copyi18n.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\filename.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\pdfImage.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\pdfMessage.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\pdfOpen.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\pdfPage.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\simple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\html5\tsv.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\className.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\collections.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\custom.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\export.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\keys.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\multiple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\new.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\plugins.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\autoPrint.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\columns.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\customisation.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\message.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\select.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\print\simple.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\Buttons\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.bootstrap.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.bootstrap.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.colVis.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.colVis.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.flash.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.flash.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.foundation.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.foundation.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.html5.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.html5.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.jqueryui.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.jqueryui.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.print.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\buttons.print.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\dataTables.buttons.js" />
+    <Content Include="components\data-table\extensions\Buttons\js\dataTables.buttons.min.js" />
+    <Content Include="components\data-table\extensions\Buttons\License.txt" />
+    <Content Include="components\data-table\extensions\Buttons\swf\flashExport.swf" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.bootstrap.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.dataTables.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.foundation.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.foundation.min.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.jqueryui.css" />
+    <Content Include="components\data-table\extensions\ColReorder\css\colReorder.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\index.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\col_filter.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\new_init.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\predefined.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\realtime.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\reset.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\scrolling.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\integration\colvis.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\integration\fixedcolumns.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\integration\fixedheader.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\integration\server_side.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\integration\state_save.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\styling\alt_insert.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\ColReorder\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="components\data-table\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="components\data-table\extensions\ColReorder\License.txt" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.bootstrap.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.dataTables.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.foundation.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.foundation.min.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.jqueryui.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\css\fixedColumns.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\index.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\colvis.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\css_size.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\index_column.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\left_right_columns.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\right_column.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\server-side-processing.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\size_fixed.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\size_fluid.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\initialisation\two_columns.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\colvis.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\col_filter.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\rowspan.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\examples\styling\server-side-processing.html" />
+    <Content Include="components\data-table\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="components\data-table\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="components\data-table\extensions\FixedColumns\License.txt" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.bootstrap.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.dataTables.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.foundation.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.foundation.min.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.jqueryui.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\css\fixedHeader.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\index.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\integration\colreorder.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\integration\index.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\integration\responsive.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\enable-disable.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\header_footer.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\index.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\new.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\offset.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\simple.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\options\two_tables.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="components\data-table\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="components\data-table\extensions\FixedHeader\License.txt" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.bootstrap.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.dataTables.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.foundation.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.foundation.min.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.jqueryui.css" />
+    <Content Include="components\data-table\extensions\KeyTable\css\keyTable.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\index.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\events.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\scrolling.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\server-side.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\initialisation\stateSave.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\styling\focusStyle.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\KeyTable\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="components\data-table\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="components\data-table\extensions\KeyTable\License.txt" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.bootstrap.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.dataTables.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.foundation.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.foundation.min.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.jqueryui.css" />
+    <Content Include="components\data-table\extensions\Responsive\css\responsive.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\auto.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\classes.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\complexHeader.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\fixedHeader.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\index.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\display-control\init-classes.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\index.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\default.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\compact.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\Responsive\examples\styling\scrolling.html" />
+    <Content Include="components\data-table\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="components\data-table\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="components\data-table\extensions\Responsive\License.txt" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.bootstrap.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.dataTables.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.foundation.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.foundation.min.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.jqueryui.css" />
+    <Content Include="components\data-table\extensions\RowReorder\css\rowReorder.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\index.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\defaults.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\events.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\responsive.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\restrictedOrdering.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\selector.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\reorderClass.html" />
+    <Content Include="components\data-table\extensions\RowReorder\examples\styling\snapX.html" />
+    <Content Include="components\data-table\extensions\RowReorder\js\dataTables.rowReorder.js" />
+    <Content Include="components\data-table\extensions\RowReorder\js\dataTables.rowReorder.min.js" />
+    <Content Include="components\data-table\extensions\RowReorder\License.txt" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.bootstrap.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.dataTables.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.foundation.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.foundation.min.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.jqueryui.css" />
+    <Content Include="components\data-table\extensions\Scroller\css\scroller.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="components\data-table\extensions\Scroller\examples\index.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\api_scrolling.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\fixedColumns.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\large_js_source.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\server-side_processing.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\initialisation\state_saving.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\Scroller\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="components\data-table\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="components\data-table\extensions\Scroller\License.txt" />
+    <Content Include="components\data-table\extensions\Select\css\select.bootstrap.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.bootstrap.min.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.dataTables.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.dataTables.min.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.foundation.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.foundation.min.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.jqueryui.css" />
+    <Content Include="components\data-table\extensions\Select\css\select.jqueryui.min.css" />
+    <Content Include="components\data-table\extensions\Select\examples\api\events.html" />
+    <Content Include="components\data-table\extensions\Select\examples\api\get.html" />
+    <Content Include="components\data-table\extensions\Select\examples\api\index.html" />
+    <Content Include="components\data-table\extensions\Select\examples\api\select.html" />
+    <Content Include="components\data-table\extensions\Select\examples\index.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\blurable.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\buttons.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\cells.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\checkbox.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\deferRender.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\i18n.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\index.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\multi.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\reload.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\simple.html" />
+    <Content Include="components\data-table\extensions\Select\examples\initialisation\single.html" />
+    <Content Include="components\data-table\extensions\Select\examples\styling\bootstrap.html" />
+    <Content Include="components\data-table\extensions\Select\examples\styling\foundation.html" />
+    <Content Include="components\data-table\extensions\Select\examples\styling\index.html" />
+    <Content Include="components\data-table\extensions\Select\examples\styling\jqueryui.html" />
+    <Content Include="components\data-table\extensions\Select\js\dataTables.select.js" />
+    <Content Include="components\data-table\extensions\Select\js\dataTables.select.min.js" />
+    <Content Include="components\data-table\extensions\Select\License.txt" />
+    <Content Include="components\data-table\media\css\custom-select.js" />
+    <Content Include="components\data-table\media\css\dataTables.bootstrap.css" />
+    <Content Include="components\data-table\media\css\dataTables.bootstrap.min.css" />
+    <Content Include="components\data-table\media\css\dataTables.foundation.css" />
+    <Content Include="components\data-table\media\css\dataTables.foundation.min.css" />
+    <Content Include="components\data-table\media\css\dataTables.jqueryui.css" />
+    <Content Include="components\data-table\media\css\dataTables.jqueryui.min.css" />
+    <Content Include="components\data-table\media\css\jquery.dataTables.css" />
+    <Content Include="components\data-table\media\css\jquery.dataTables.min.css" />
+    <Content Include="components\data-table\media\css\jquery.dataTables_themeroller.css" />
+    <Content Include="components\data-table\media\images\arrow_drop_down-white.svg" />
+    <Content Include="components\data-table\media\images\arrow_drop_down.svg" />
+    <Content Include="components\data-table\media\images\favicon.ico" />
+    <Content Include="components\data-table\media\images\sort_asc.png" />
+    <Content Include="components\data-table\media\images\sort_asc_disabled.png" />
+    <Content Include="components\data-table\media\images\sort_both.png" />
+    <Content Include="components\data-table\media\images\sort_desc.png" />
+    <Content Include="components\data-table\media\images\sort_desc_disabled.png" />
+    <Content Include="components\data-table\media\js\custom-select.js" />
+    <Content Include="components\data-table\media\js\dataTables.bootstrap.js" />
+    <Content Include="components\data-table\media\js\dataTables.bootstrap.min.js" />
+    <Content Include="components\data-table\media\js\dataTables.foundation.js" />
+    <Content Include="components\data-table\media\js\dataTables.foundation.min.js" />
+    <Content Include="components\data-table\media\js\dataTables.jqueryui.js" />
+    <Content Include="components\data-table\media\js\dataTables.jqueryui.min.js" />
+    <Content Include="components\data-table\media\js\jquery.dataTables.js" />
+    <Content Include="components\data-table\media\js\jquery.dataTables.min.js" />
+    <Content Include="components\data-table\media\js\jquery.js" />
+    <Content Include="components\data-table\snippets\basic-sidebar-page.html" />
+    <Content Include="components\data-table\snippets\data-table.css" />
+    <Content Include="components\data-table\snippets\data-table.js" />
+    <Content Include="components\data-table\snippets\table-card-inverse.css" />
+    <Content Include="components\data-table\snippets\table-card-inverse.html" />
+    <Content Include="components\data-table\snippets\table-card-inverse.js" />
+    <Content Include="components\data-table\snippets\table-card.html" />
+    <Content Include="components\data-table\snippets\table-responsive-page.html" />
+    <Content Include="components\data-table\snippets\table-responsive.css" />
+    <Content Include="components\data-table\snippets\table-responsive.html" />
+    <Content Include="components\data-table\snippets\table-responsive.js" />
+    <Content Include="components\datetimepicker\css\bootstrap-datetimepicker.css" />
+    <Content Include="components\datetimepicker\css\pmd-datetimepicker.css" />
+    <Content Include="components\datetimepicker\datetimepicker.html" />
+    <Content Include="components\datetimepicker\js\bootstrap-datetimepicker.js" />
+    <Content Include="components\datetimepicker\js\moment-with-locales.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-default.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-default.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-disable.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-disable.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-inline.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-inline.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-left-header.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-left-header.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-linked.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-linked.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-popup.css" />
+    <Content Include="components\datetimepicker\snippets\datepicker-popup.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-popup.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-time.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-time.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker-view-mode.html" />
+    <Content Include="components\datetimepicker\snippets\datepicker-view-mode.js" />
+    <Content Include="components\datetimepicker\snippets\datepicker.css" />
+    <Content Include="components\datetimepicker\snippets\datepicker.js" />
+    <Content Include="components\dropdown\css\dropdown.css" />
+    <Content Include="components\dropdown\dropdown.html" />
+    <Content Include="components\dropdown\js\bootstrap-hover-dropdown.js" />
+    <Content Include="components\dropdown\js\dropdown.js" />
+    <Content Include="components\dropdown\snippets\bootstrap-basic.css" />
+    <Content Include="components\dropdown\snippets\bootstrap-basic.html" />
+    <Content Include="components\dropdown\snippets\bootstrap-basic.js" />
+    <Content Include="components\dropdown\snippets\dropdown-directions.css" />
+    <Content Include="components\dropdown\snippets\dropdown-directions.html" />
+    <Content Include="components\dropdown\snippets\dropdown-hover.html" />
+    <Content Include="components\dropdown\snippets\dropdown-hover.js" />
+    <Content Include="components\dropdown\snippets\dropdown-types.html" />
+    <Content Include="components\dropdown\snippets\dropdown.js" />
+    <Content Include="components\dropdown\snippets\dropdowns.css" />
+    <Content Include="components\dropdown\snippets\events.js" />
+    <Content Include="components\file-upload\css\image-upload.css" />
+    <Content Include="components\file-upload\css\upload-file.css" />
+    <Content Include="components\file-upload\js\upload-image.js" />
+    <Content Include="components\floating-action-button\css\floating-action-button.css" />
+    <Content Include="components\floating-action-button\floating-action-button.html" />
+    <Content Include="components\floating-action-button\snippets\floating-button.css" />
+    <Content Include="components\floating-action-button\snippets\floating-button.html" />
+    <Content Include="components\floating-action-button\snippets\floating-button.js" />
+    <Content Include="components\form\form.html" />
+    <Content Include="components\form\snippets\bootstrap-basic.css" />
+    <Content Include="components\form\snippets\bootstrap-basic.html" />
+    <Content Include="components\form\snippets\bootstrap-basic.js" />
+    <Content Include="components\get-started\snippets\get-started.html" />
+    <Content Include="components\get-started\snippets\html-setup.html" />
+    <Content Include="components\get-started\snippets\included-bootstrap.html" />
+    <Content Include="components\get-started\snippets\use-components.html" />
+    <Content Include="components\icons\css\google-icons.css" />
+    <Content Include="components\icons\propeller-icons.html" />
+    <Content Include="components\icons\snippets\icons-sizing-variation.html" />
+    <Content Include="components\icons\snippets\propeller-icons.css" />
+    <Content Include="components\list\css\list.css" />
+    <Content Include="components\list\img\40x40.png" />
+    <Content Include="components\list\index.html" />
+    <Content Include="components\list\snippets\bootstrap-basic.css" />
+    <Content Include="components\list\snippets\description-list.html" />
+    <Content Include="components\list\snippets\disabled-list-items.html" />
+    <Content Include="components\list\snippets\group-items-with-heading.html" />
+    <Content Include="components\list\snippets\group-items.html" />
+    <Content Include="components\list\snippets\inline-list.html" />
+    <Content Include="components\list\snippets\linked-items.html" />
+    <Content Include="components\list\snippets\list-group.css" />
+    <Content Include="components\list\snippets\simple-list.html" />
+    <Content Include="components\list\snippets\single-avtar.html" />
+    <Content Include="components\list\snippets\single-line.html" />
+    <Content Include="components\list\snippets\three-avtar.html" />
+    <Content Include="components\list\snippets\three-line.html" />
+    <Content Include="components\list\snippets\two-line.html" />
+    <Content Include="components\modal\css\modal.css" />
+    <Content Include="components\modal\js\modal.js" />
+    <Content Include="components\modal\modal.html" />
+    <Content Include="components\modal\snippets\bootstrap-basic.css" />
+    <Content Include="components\modal\snippets\bootstrap-basic.js" />
+    <Content Include="components\modal\snippets\dialogs-alert.html" />
+    <Content Include="components\modal\snippets\dialogs-behavior.html" />
+    <Content Include="components\modal\snippets\dialogs-form.css" />
+    <Content Include="components\modal\snippets\dialogs-form.html" />
+    <Content Include="components\modal\snippets\dialogs-form.js" />
+    <Content Include="components\modal\snippets\dialogs-media.css" />
+    <Content Include="components\modal\snippets\dialogs-media.html" />
+    <Content Include="components\modal\snippets\dialogs-simple-alert.html" />
+    <Content Include="components\modal\snippets\dialogs-simple-listing.css" />
+    <Content Include="components\modal\snippets\dialogs-simple-listing.html" />
+    <Content Include="components\modal\snippets\dialogs-size.html" />
+    <Content Include="components\modal\snippets\dialogs.css" />
+    <Content Include="components\modal\snippets\dialogs.js" />
+    <Content Include="components\modal\snippets\events.js" />
+    <Content Include="components\navbar\css\navbar.css" />
+    <Content Include="components\navbar\navbar-pages\basic-menu-page.html" />
+    <Content Include="components\navbar\navbar-pages\bootstrap-basic-menu-page.html" />
+    <Content Include="components\navbar\navbar-pages\collapsible-menu-page.html" />
+    <Content Include="components\navbar\navbar-pages\placement-menu-page.html" />
+    <Content Include="components\navbar\navbar-pages\search-menu-page.html" />
+    <Content Include="components\navbar\navbar-pages\sidebar-menu-page.html" />
+    <Content Include="components\navbar\navbar.html" />
+    <Content Include="components\navbar\snippets\basic-menu-page.html" />
+    <Content Include="components\navbar\snippets\basic-menu.html" />
+    <Content Include="components\navbar\snippets\bootstrap-basic-menu-page.html" />
+    <Content Include="components\navbar\snippets\bootstrap-basic-menu.html" />
+    <Content Include="components\navbar\snippets\bootstrap-basic.css" />
+    <Content Include="components\navbar\snippets\bootstrap-basic.js" />
+    <Content Include="components\navbar\snippets\collapsible-menu-page.html" />
+    <Content Include="components\navbar\snippets\collapsible-menu.html" />
+    <Content Include="components\navbar\snippets\menu.css" />
+    <Content Include="components\navbar\snippets\menu.js" />
+    <Content Include="components\navbar\snippets\placement-menu-page.html" />
+    <Content Include="components\navbar\snippets\placement-menu.html" />
+    <Content Include="components\navbar\snippets\search-menu-page.html" />
+    <Content Include="components\navbar\snippets\search-menu.html" />
+    <Content Include="components\navbar\snippets\sidebar-menu-page.html" />
+    <Content Include="components\navbar\snippets\sidebar-menu.html" />
+    <Content Include="components\pagination\css\pagination.css" />
+    <Content Include="components\pagination\css\_notes\dwsync.xml" />
+    <Content Include="components\popover\css\popover.css" />
+    <Content Include="components\popover\js\popover.js" />
+    <Content Include="components\popover\popover.html" />
+    <Content Include="components\popover\snippets\colored.html" />
+    <Content Include="components\popover\snippets\events.js" />
+    <Content Include="components\popover\snippets\html.html" />
+    <Content Include="components\popover\snippets\inline-html.html" />
+    <Content Include="components\popover\snippets\on-click-with-title.html" />
+    <Content Include="components\popover\snippets\on-click.html" />
+    <Content Include="components\popover\snippets\on-hover.html" />
+    <Content Include="components\popover\snippets\popover-color.css" />
+    <Content Include="components\popover\snippets\popover-colore.js" />
+    <Content Include="components\popover\snippets\popover-html.js" />
+    <Content Include="components\popover\snippets\popover.css" />
+    <Content Include="components\popover\snippets\popover.js" />
+    <Content Include="components\progressbar\css\progressbar.css" />
+    <Content Include="components\progressbar\progressbar.html" />
+    <Content Include="components\progressbar\snippets\bootstrap-basic.css" />
+    <Content Include="components\progressbar\snippets\progressbar-animated.html" />
+    <Content Include="components\progressbar\snippets\progressbar-bootstrap.html" />
+    <Content Include="components\progressbar\snippets\progressbar-staked.html" />
+    <Content Include="components\progressbar\snippets\progressbar-static.html" />
+    <Content Include="components\progressbar\snippets\progressbar-striped.html" />
+    <Content Include="components\progressbar\snippets\progressbar.css" />
+    <Content Include="components\radio\css\radio.css" />
+    <Content Include="components\radio\js\radio.js" />
+    <Content Include="components\radio\radio.html" />
+    <Content Include="components\radio\snippets\inline-radio.html" />
+    <Content Include="components\radio\snippets\radio.css" />
+    <Content Include="components\radio\snippets\radio.html" />
+    <Content Include="components\radio\snippets\radio.js" />
+    <Content Include="components\range-slider\css\jquery.nouislider.css" />
+    <Content Include="components\range-slider\css\nouislider.min.css" />
+    <Content Include="components\range-slider\css\range-slider.css" />
+    <Content Include="components\range-slider\js\jquery.nouislider.min.js" />
+    <Content Include="components\range-slider\js\nouislider.js" />
+    <Content Include="components\range-slider\js\wNumb.js" />
+    <Content Include="components\range-slider\range-slider.html" />
+    <Content Include="components\range-slider\snippets\disable-hendler.js" />
+    <Content Include="components\range-slider\snippets\disable-multiple-hendler.html" />
+    <Content Include="components\range-slider\snippets\disable-multiple-hendler.js" />
+    <Content Include="components\range-slider\snippets\disable-single-hendler.html" />
+    <Content Include="components\range-slider\snippets\multiple-hendler-value.html" />
+    <Content Include="components\range-slider\snippets\multiple-hendler-value.js" />
+    <Content Include="components\range-slider\snippets\multiple-hendler.html" />
+    <Content Include="components\range-slider\snippets\multiple-hendler.js" />
+    <Content Include="components\range-slider\snippets\multiple-tooltip-bottom-hendler.html" />
+    <Content Include="components\range-slider\snippets\multiple-tooltip-bottom-hendler.js" />
+    <Content Include="components\range-slider\snippets\multiple-tooltip-hendler.html" />
+    <Content Include="components\range-slider\snippets\multiple-tooltip-hendler.js" />
+    <Content Include="components\range-slider\snippets\range-slider-horizontal.html" />
+    <Content Include="components\range-slider\snippets\range-slider-verticle.html" />
+    <Content Include="components\range-slider\snippets\range-slider.css" />
+    <Content Include="components\range-slider\snippets\range-slider.js" />
+    <Content Include="components\range-slider\snippets\single-hendler-bottom-tooltip.html" />
+    <Content Include="components\range-slider\snippets\single-hendler-bottom-tooltip.js" />
+    <Content Include="components\range-slider\snippets\single-hendler-value-input.html" />
+    <Content Include="components\range-slider\snippets\single-hendler-value-input.js" />
+    <Content Include="components\range-slider\snippets\single-hendler.html" />
+    <Content Include="components\range-slider\snippets\single-hendler.js" />
+    <Content Include="components\range-slider\snippets\single-step-hendler.html" />
+    <Content Include="components\range-slider\snippets\single-step-hendler.js" />
+    <Content Include="components\range-slider\snippets\single-tooltip-hendler.html" />
+    <Content Include="components\range-slider\snippets\single-tooltip-hendler.js" />
+    <Content Include="components\range-slider\snippets\tooltip-bottom-lower-hendler.html" />
+    <Content Include="components\range-slider\snippets\tooltip-bottom-lower-hendler.js" />
+    <Content Include="components\range-slider\snippets\tooltip-bottom-upper-hendler.html" />
+    <Content Include="components\range-slider\snippets\tooltip-bottom-upper-hendler.js" />
+    <Content Include="components\range-slider\snippets\verticle-multiple-hendler.html" />
+    <Content Include="components\range-slider\snippets\verticle-multiple-hendler.js" />
+    <Content Include="components\range-slider\snippets\verticle-single-hendler.html" />
+    <Content Include="components\range-slider\snippets\verticle-single-hendler.js" />
+    <Content Include="components\select2\css\pmd-select2.css" />
+    <Content Include="components\select2\css\select2-bootstrap.css" />
+    <Content Include="components\select2\css\select2.css" />
+    <Content Include="components\select2\css\select2.min.css" />
+    <Content Include="components\select2\js\pmd-select2.js" />
+    <Content Include="components\select2\js\select2.full.js" />
+    <Content Include="components\select2\select2.html" />
+    <Content Include="components\select2\snippets\selectbox-tags-add.html" />
+    <Content Include="components\select2\snippets\selectbox-tags-add.js" />
+    <Content Include="components\select2\snippets\selectbox-tags.html" />
+    <Content Include="components\select2\snippets\selectbox-tags.js" />
+    <Content Include="components\select2\snippets\selectbox-with-search.html" />
+    <Content Include="components\select2\snippets\selectbox-with-search.js" />
+    <Content Include="components\select2\snippets\selectbox.css" />
+    <Content Include="components\select2\snippets\selectbox.html" />
+    <Content Include="components\select2\snippets\selectbox.js" />
+    <Content Include="components\shadow\css\shadow.css" />
+    <Content Include="components\shadow\shadow.html" />
+    <Content Include="components\shadow\snippets\shadow.css" />
+    <Content Include="components\shadow\snippets\shadow.html" />
+    <Content Include="components\sidebar\css\sidebar.css" />
+    <Content Include="components\sidebar\js\sidebar.js" />
+    <Content Include="components\sidebar\sidebar-pages\basic-sidebar-page.html" />
+    <Content Include="components\sidebar\sidebar-pages\fixed-sidebar-page.html" />
+    <Content Include="components\sidebar\sidebar-pages\open-sidebar-page.html" />
+    <Content Include="components\sidebar\sidebar-pages\right-sidebar-page.html" />
+    <Content Include="components\sidebar\sidebar.html" />
+    <Content Include="components\sidebar\snippets\basic-fixed-sidebar.html" />
+    <Content Include="components\sidebar\snippets\basic-sidebar-page.html" />
+    <Content Include="components\sidebar\snippets\basic-sidebar.html" />
+    <Content Include="components\sidebar\snippets\default-open-sidebar.html" />
+    <Content Include="components\sidebar\snippets\fixed-sidebar-page.html" />
+    <Content Include="components\sidebar\snippets\open-sidebar-page.html" />
+    <Content Include="components\sidebar\snippets\propeller-sidebar.css" />
+    <Content Include="components\sidebar\snippets\right-sidebar-page.html" />
+    <Content Include="components\sidebar\snippets\right-sidebar.html" />
+    <Content Include="components\sidebar\snippets\sidebar.css" />
+    <Content Include="components\sidebar\snippets\sidebar.js" />
+    <Content Include="components\table\css\table.css" />
+    <Content Include="components\table\snippets\basic-bootstrap-table.html" />
+    <Content Include="components\table\snippets\basic-table.html" />
+    <Content Include="components\table\snippets\bordered-table.html" />
+    <Content Include="components\table\snippets\contextual-table.html" />
+    <Content Include="components\table\snippets\hoverable-table.html" />
+    <Content Include="components\table\snippets\inverse-table.html" />
+    <Content Include="components\table\snippets\reflow-table.html" />
+    <Content Include="components\table\snippets\row-card.html" />
+    <Content Include="components\table\snippets\small-table.html" />
+    <Content Include="components\table\snippets\striped-table.html" />
+    <Content Include="components\table\snippets\table-bootstrap.css" />
+    <Content Include="components\table\snippets\table-bootstrap.js" />
+    <Content Include="components\table\snippets\table-card.css" />
+    <Content Include="components\table\snippets\table-card.html" />
+    <Content Include="components\table\snippets\table-card.js" />
+    <Content Include="components\table\snippets\table-nested.html" />
+    <Content Include="components\table\snippets\table.css" />
+    <Content Include="components\table\snippets\table.js" />
+    <Content Include="components\table\table.html" />
+    <Content Include="components\tab\css\tab.css" />
+    <Content Include="components\tab\js\tab-scrollable.js" />
+    <Content Include="components\tab\snippets\events.js" />
+    <Content Include="components\tab\snippets\fixed-tab.html" />
+    <Content Include="components\tab\snippets\scrollable-tab.css" />
+    <Content Include="components\tab\snippets\scrollable-tab.html" />
+    <Content Include="components\tab\snippets\tab-bar-centered.html" />
+    <Content Include="components\tab\snippets\tab-with-dropdown.css" />
+    <Content Include="components\tab\snippets\tab-with-dropdown.html" />
+    <Content Include="components\tab\snippets\tab-with-dropdown.js" />
+    <Content Include="components\tab\snippets\tab-without-background.html" />
+    <Content Include="components\tab\snippets\tabs-bootstrap.css" />
+    <Content Include="components\tab\snippets\tabs-bootstrap.html" />
+    <Content Include="components\tab\snippets\tabs-bootstrap.js" />
+    <Content Include="components\tab\snippets\tabs-default.html" />
+    <Content Include="components\tab\snippets\tabs.css" />
+    <Content Include="components\tab\snippets\tabs.js" />
+    <Content Include="components\tab\tabs.html" />
+    <Content Include="components\textfield\css\textfield.css" />
+    <Content Include="components\textfield\js\textfield.js" />
+    <Content Include="components\textfield\snippets\basic-text-fields.html" />
+    <Content Include="components\textfield\snippets\control-size-text-fields.html" />
+    <Content Include="components\textfield\snippets\input-icon-text-fields.css" />
+    <Content Include="components\textfield\snippets\input-icon-text-fields.html" />
+    <Content Include="components\textfield\snippets\states-text-fields.html" />
+    <Content Include="components\textfield\snippets\text-area.css" />
+    <Content Include="components\textfield\snippets\text-area.html" />
+    <Content Include="components\textfield\snippets\text-area.js" />
+    <Content Include="components\textfield\snippets\text-fields.css" />
+    <Content Include="components\textfield\snippets\text-fields.js" />
+    <Content Include="components\textfield\snippets\validation-text-fields.html" />
+    <Content Include="components\textfield\textfield.html" />
+    <Content Include="components\toggle-switch\css\toggle-switch.css" />
+    <Content Include="components\toggle-switch\snippets\toggle-button.css" />
+    <Content Include="components\toggle-switch\snippets\toggle-button.html" />
+    <Content Include="components\toggle-switch\toggle-switch.html" />
+    <Content Include="components\tooltip\css\tooltip.css" />
+    <Content Include="components\tooltip\css\_notes\dwsync.xml" />
+    <Content Include="components\tooltip\snippets\basic-bootstrap-tooltip.html" />
+    <Content Include="components\tooltip\snippets\events.js" />
+    <Content Include="components\tooltip\snippets\tooltip-bootstrap.css" />
+    <Content Include="components\tooltip\snippets\tooltip-bootstrap.js" />
+    <Content Include="components\tooltip\snippets\tooltip.css" />
+    <Content Include="components\tooltip\snippets\tooltip.html" />
+    <Content Include="components\tooltip\snippets\tooltip.js" />
+    <Content Include="components\tooltip\tooltip.html" />
+    <Content Include="components\typography\css\typography.css" />
+    <Content Include="components\typography\snippets\bootstrap-basic.css" />
+    <Content Include="components\typography\snippets\typography-address.html" />
+    <Content Include="components\typography\snippets\typography-blockquotes-footer.html" />
+    <Content Include="components\typography\snippets\typography-blockquotes.html" />
+    <Content Include="components\typography\snippets\typography-display-heading.css" />
+    <Content Include="components\typography\snippets\typography-display-heading.html" />
+    <Content Include="components\typography\snippets\typography-fancy-heading.css" />
+    <Content Include="components\typography\snippets\typography-fancy-heading.html" />
+    <Content Include="components\typography\snippets\typography-heading.css" />
+    <Content Include="components\typography\snippets\typography-heading.html" />
+    <Content Include="components\typography\snippets\typography-inline-text.html" />
+    <Content Include="components\typography\snippets\typography-lead.html" />
+    <Content Include="components\typography\snippets\typography-list-align.css" />
+    <Content Include="components\typography\snippets\typography-list-align.html" />
+    <Content Include="components\typography\snippets\typography-list-inline.html" />
+    <Content Include="components\typography\snippets\typography-list.html" />
+    <Content Include="components\typography\snippets\typography-reverse.html" />
+    <Content Include="components\typography\snippets\typography.css" />
+    <Content Include="components\typography\typography.html" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="css\animate.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\prettyPhoto.css" />
+    <Content Include="css\style.css" />
+    <Content Include="EmailTemplate\jobapprovedclient.html" />
+    <Content Include="EmailTemplate\jobapprovedEmployee.html" />
+    <Content Include="EmailTemplate\jobemployeerequest.html" />
+    <Content Include="EmailTemplate\jobpaymentforclient.html" />
+    <Content Include="EmailTemplate\jobrequest.html" />
+    <Content Include="EmailTemplate\register.html" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Black-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Black-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Black-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-BlackItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-BlackItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-BlackItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Bold-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Bold-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Bold-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-BoldItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-BoldItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-BoldItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Italic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Italic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Italic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Light-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Light-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Light-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-LightItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-LightItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-LightItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Medium-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Medium-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Medium-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-MediumItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-MediumItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-MediumItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Regular-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Regular-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Regular-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-Thin-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-Thin-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-Thin-webfont.woff" />
+    <Content Include="assets\fonts\roboto\Roboto-ThinItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\Roboto-ThinItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\Roboto-ThinItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Bold-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Bold-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Bold-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-BoldItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-BoldItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-BoldItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Italic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Italic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Italic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Light-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Light-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Light-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-LightItalic-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-LightItalic-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-LightItalic-webfont.woff" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Regular-webfont.eot" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Regular-webfont.ttf" />
+    <Content Include="assets\fonts\roboto\RobotoCondensed-Regular-webfont.woff" />
+    <Content Include="components\data-table\examples\resources\examples.php" />
+    <Content Include="components\data-table\examples\resources\syntax\Syntax Highlighter license" />
+    <Content Include="components\data-table\examples\server_side\scripts\ids-arrays.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\ids-objects.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\jsonp.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\objects.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\post.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\server_processing.php" />
+    <Content Include="components\data-table\examples\server_side\scripts\ssp.class.php" />
+    <Content Include="components\data-table\extensions\AutoFill\Readme.md" />
+    <Content Include="components\data-table\extensions\Buttons\css\common.scss" />
+    <Content Include="components\data-table\extensions\Buttons\css\mixins.scss" />
+    <Content Include="components\data-table\extensions\Buttons\Readme.md" />
+    <Content Include="components\data-table\extensions\ColReorder\Readme.md" />
+    <Content Include="components\data-table\extensions\FixedColumns\Readme.md" />
+    <Content Include="components\data-table\extensions\FixedHeader\Readme.md" />
+    <Content Include="components\data-table\extensions\KeyTable\Readme.md" />
+    <Content Include="components\data-table\extensions\Responsive\Readme.md" />
+    <Content Include="components\data-table\extensions\RowReorder\Readme.md" />
+    <Content Include="components\data-table\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="components\data-table\extensions\Scroller\Readme.md" />
+    <Content Include="components\data-table\extensions\Select\Readme.md" />
+    <Content Include="components\data-table\media\images\Sorting icons.psd" />
+    <Content Include="Areas\user\Views\Web.config" />
+    <Content Include="Areas\user\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\user\Views\Login\Login.cshtml" />
+    <Content Include="Areas\user\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\user\Views\Home\UserHome.cshtml" />
+    <Content Include="Areas\user\Views\Register\Signup.cshtml" />
+    <Content Include="Areas\user\Views\Shared\_LayoutSignup.cshtml" />
+    <Content Include="images\logo_original.png" />
+    <Content Include="images\no_profile.png" />
+    <Content Include="Areas\user\Views\ClientList\Index.cshtml" />
+    <Content Include="Areas\user\Views\EmployeeList\Index.cshtml" />
+    <Content Include="Areas\user\Views\ClientList\ViewClient.cshtml" />
+    <Content Include="Areas\user\Views\EmployeeList\ViewEmployee.cshtml" />
+    <Content Include="Areas\user\Views\Job\createjob.cshtml" />
+    <Content Include="Areas\user\Views\Job\MyJobs.cshtml" />
+    <Content Include="Areas\user\Views\Job\ViewJob.cshtml" />
+    <Content Include="Areas\user\Views\AdminSetting\AdminSettingView.cshtml" />
+    <Content Include="Areas\user\Views\ContactUs\Index.cshtml" />
+    <Content Include="Areas\user\Views\ContactUs\view.cshtml" />
+    <Content Include="Areas\user\Views\Job\jobsetting.cshtml" />
+    <EntityDeploy Include="Models\LABO.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LABO.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LABO.edmx.diagram">
+      <DependentUpon>LABO.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\user\Views\Job\_search.cshtml" />
+    <Content Include="Areas\user\Views\Job\_jobemployeelist.cshtml" />
+    <Content Include="Areas\user\Views\Job\_invitationsentsuccess.cshtml" />
+    <Content Include="Areas\user\Views\Job\_invitedcandid.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\_employeejobproposals.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\jobproposals.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\clientjobproposal.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\_clientjobproposals.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\viewjob.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\jobrequested.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\_employeejobrequested.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\findwork.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\readmore.cshtml" />
+    <Content Include="Areas\user\Views\Job\_employeerequestedsuccess.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\viewjobrequested.cshtml" />
+    <Content Include="Areas\user\Views\employeejob\viewjobproposal.cshtml" />
+    <Content Include="Areas\user\Views\Job\_hiredcandid.cshtml" />
+    <Content Include="Areas\user\Views\Dashboard\Admin.cshtml" />
+    <Content Include="Areas\user\Views\Dashboard\Client.cshtml" />
+    <Content Include="Areas\user\Views\Dashboard\Employee.cshtml" />
+    <Content Include="Areas\user\Views\Payment\checkout.cshtml" />
+    <Content Include="Areas\user\Views\error\notfound.cshtml" />
+    <None Include="Properties\PublishProfiles\LABO.pubxml" />
+    <Content Include="images\ads\ad1.png" />
+    <Content Include="images\ads\ad2.png" />
+    <Content Include="images\ads\ad3.png" />
+    <Content Include="images\ads\ad4.png" />
+    <Content Include="images\blog\avatar.jpg" />
+    <Content Include="images\blog\avatar1.png" />
+    <Content Include="images\blog\avatar2.png" />
+    <Content Include="images\blog\avatar3.png" />
+    <Content Include="images\blog\blog1.jpg" />
+    <Content Include="images\blog\blog2.jpg" />
+    <Content Include="images\blog\thumb1.jpg" />
+    <Content Include="images\blog\thumb2.jpg" />
+    <Content Include="images\blog\thumb3.jpg" />
+    <Content Include="images\hardshake.jpg" />
+    <Content Include="images\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="images\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="images\ico\favicon.ico" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\portfolio\full\item1.jpg" />
+    <Content Include="images\portfolio\full\item2.jpg" />
+    <Content Include="images\portfolio\full\item3.jpg" />
+    <Content Include="images\portfolio\full\item4.jpg" />
+    <Content Include="images\portfolio\full\item5.jpg" />
+    <Content Include="images\portfolio\full\item6.jpg" />
+    <Content Include="images\portfolio\full\item7.jpg" />
+    <Content Include="images\portfolio\recent\item1.png" />
+    <Content Include="images\portfolio\recent\item2.png" />
+    <Content Include="images\portfolio\recent\item3.png" />
+    <Content Include="images\portfolio\thumb\item1.jpg" />
+    <Content Include="images\portfolio\thumb\item2.jpg" />
+    <Content Include="images\portfolio\thumb\item3.jpg" />
+    <Content Include="images\portfolio\thumb\item4.jpg" />
+    <Content Include="images\portfolio\thumb\item5.jpg" />
+    <Content Include="images\portfolio\thumb\item6.jpg" />
+    <Content Include="images\portfolio\thumb\item7.jpg" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\dark_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\dark_square\contentPattern.png" />
+    <Content Include="images\prettyPhoto\dark_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\dark_square\loader.gif" />
+    <Content Include="images\prettyPhoto\dark_square\sprite.png" />
+    <Content Include="images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="images\prettyPhoto\default\loader.gif" />
+    <Content Include="images\prettyPhoto\default\sprite.png" />
+    <Content Include="images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="images\prettyPhoto\facebook\btnNext.png" />
+    <Content Include="images\prettyPhoto\facebook\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternBottom.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternLeft.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternRight.png" />
+    <Content Include="images\prettyPhoto\facebook\contentPatternTop.png" />
+    <Content Include="images\prettyPhoto\facebook\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\facebook\loader.gif" />
+    <Content Include="images\prettyPhoto\facebook\sprite.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_rounded\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_rounded\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\loader.gif" />
+    <Content Include="images\prettyPhoto\light_rounded\sprite.png" />
+    <Content Include="images\prettyPhoto\light_square\btnNext.png" />
+    <Content Include="images\prettyPhoto\light_square\btnPrevious.png" />
+    <Content Include="images\prettyPhoto\light_square\default_thumbnail.gif" />
+    <Content Include="images\prettyPhoto\light_square\loader.gif" />
+    <Content Include="images\prettyPhoto\light_square\sprite.png" />
+    <Content Include="images\slider\bg1.jpg" />
+    <Content Include="images\slider\bg2.jpg" />
+    <Content Include="images\slider\bg3.jpg" />
+    <Content Include="images\slider\newbg1.jpg" />
+    <Content Include="images\slider\newbg2.jpg" />
+    <Content Include="images\slider\newbg3.jpg" />
+    <Content Include="images\slider\newbg4.jpg" />
+    <Content Include="images\team-member.jpg" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\html5shiv.js" />
+    <Content Include="js\jquery.isotope.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jquery.prettyPhoto.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\respond.min.js" />
+    <Content Include="Models\LABO.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LABO.edmx</DependentUpon>
+      <LastGenOutput>LABO.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LABO.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LABO.edmx</DependentUpon>
+      <LastGenOutput>LABO.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\jqeury2.0.3.min.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="themes\css\propeller-admin.css" />
+    <Content Include="themes\css\propeller-theme.css" />
+    <Content Include="themes\images\avtar-b.jpg" />
+    <Content Include="themes\images\child-table-collapse.svg" />
+    <Content Include="themes\images\child-table-expand.svg" />
+    <Content Include="themes\images\favicon.ico" />
+    <Content Include="themes\images\grow-up-arrow.png" />
+    <Content Include="themes\images\logo-icon.png" />
+    <Content Include="themes\images\profile-1.png" />
+    <Content Include="themes\images\profile-2.png" />
+    <Content Include="themes\images\profile-3.png" />
+    <Content Include="themes\images\profile-4.png" />
+    <Content Include="themes\images\propeller-bg.jpg" />
+    <Content Include="themes\images\Propeller-Logo-Inverse.png" />
+    <Content Include="themes\images\propeller-logo.png" />
+    <Content Include="themes\images\user-baykam.jpg" />
+    <Content Include="themes\images\user-icon.png" />
+    <Content Include="themes\images\user-jigen.jpg" />
+    <Content Include="themes\images\user-john.jpg" />
+    <Content Include="themes\images\user-keel.jpg" />
+    <Content Include="themes\images\user-prathit.jpg" />
+    <Content Include="themes\images\user-sergey.jpg" />
+    <Content Include="themes\images\user-sinisa.jpg" />
+    <Content Include="themes\images\user-stephen.jpg" />
+    <Content Include="themes\images\user-valerii.jpg" />
+    <Content Include="themes\images\user_add_picture.png" />
+    <Content Include="themes\js\circles.js" />
+    <Content Include="themes\js\circles.min.js" />
+    <Content Include="themes\js\highcharts-more.js" />
+    <Content Include="themes\js\highcharts.js" />
+    <Content Include="themes\js\moment.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\DashboardHome\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\Privacy\Index.cshtml" />
+    <Content Include="Views\Service\Index.cshtml" />
+    <Content Include="Views\Terms\Index.cshtml" />
+    <Content Include="Views\DashboardHome\Register.cshtml" />
+    <Content Include="Views\DashboardHome\Thankyou.cshtml" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\" />
+    <Folder Include="components\data-table\extensions\FixedColumns\examples\integration\" />
+    <Folder Include="components\floating-action-button\js\" />
+    <Folder Include="components\notification\" />
+    <Folder Include="components\toggle-switch\js\" />
+    <Folder Include="components\tooltip\js\" />
+    <Folder Include="profile_photo\" />
+    <Folder Include="user_doc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:18878/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

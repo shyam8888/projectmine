@@ -1,0 +1,17 @@
+﻿@using (Ajax.BeginForm("searchEmployeeForJob", "Job", new AjaxOptions { InsertionMode = InsertionMode.Replace, UpdateTargetId = "jobemployeelistAjaxId", OnBegin = "", OnComplete = "" }, new { @id = "searchCityZipFormID" }))
+{
+    <div class="form-group pmd-textfield form-group-lg">
+        <div class="col-md-5 col-sm-5">
+            @*  <label for="Large" class="control-label">Search By City or Zipcode</label>*@
+            <input type="Large" id="regular1" name="searchvalue" class="form-control input-group-lg" placeholder="Search By City or Zipcode">
+        </div>
+        <button class="btn btn-sm pmd-btn-raised pmd-ripple-effect btn-primary" type="button" id="btnSearch">SEARCH</button>
+    </div>
+}
+<script>
+    $('#btnSearch').click(function () {
+
+        $('#searchCityZipFormID').submit();
+
+    });
+</script>

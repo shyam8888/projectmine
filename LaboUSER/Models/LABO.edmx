@@ -1,0 +1,1030 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LABOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="Pk_ContactUsId" />
+          </Key>
+          <Property Name="Pk_ContactUsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar(max)" />
+          <Property Name="lastName" Type="nvarchar(max)" />
+          <Property Name="emailAddress" Type="nvarchar(max)" />
+          <Property Name="message" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Contact_No" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tbl_CountryMaster">
+          <Key>
+            <PropertyRef Name="Pk_CountryId" />
+          </Key>
+          <Property Name="Pk_CountryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_JobEmployees">
+          <Key>
+            <PropertyRef Name="Pk_JobEmployeeId" />
+          </Key>
+          <Property Name="Pk_JobEmployeeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_JobId" Type="bigint" />
+          <Property Name="fromUserId" Type="uniqueidentifier" />
+          <Property Name="EmplyeeFeePaymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmplyeeFeePaymentDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="toUserId" Type="uniqueidentifier" />
+          <Property Name="fromUserName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_JobMessage">
+          <Key>
+            <PropertyRef Name="Pk_JobMessageId" />
+          </Key>
+          <Property Name="Pk_JobMessageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Fk_JobId" Type="uniqueidentifier" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_JobPayment">
+          <Key>
+            <PropertyRef Name="Pk_JobPaymentId" />
+          </Key>
+          <Property Name="Pk_JobPaymentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_JobId" Type="bigint" />
+          <Property Name="UserId" Type="bigint" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionId" Type="nvarchar(max)" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Jobs">
+          <Key>
+            <PropertyRef Name="Pk_JobId" />
+          </Key>
+          <Property Name="Pk_JobId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UniqueJobId" Type="nvarchar(max)" />
+          <Property Name="ClientUserId" Type="uniqueidentifier" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="JobDescription" Type="nvarchar(max)" />
+          <Property Name="JobLocation" Type="nvarchar(max)" />
+          <Property Name="JobTiming" Type="nvarchar(max)" />
+          <Property Name="JobCategory" Type="nvarchar(max)" />
+          <Property Name="NoOfEmployeeNeeded" Type="int" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CompanyFee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ClientFeePaymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientFeePaymentDate" Type="datetime" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="JobStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_PagePermission">
+          <Key>
+            <PropertyRef Name="Pk_PageId" />
+          </Key>
+          <Property Name="Pk_PageId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsClient" Type="bit" />
+          <Property Name="IsEmployee" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Roles">
+          <Key>
+            <PropertyRef Name="Pk_RoleId" />
+          </Key>
+          <Property Name="Pk_RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Setting">
+          <Key>
+            <PropertyRef Name="Pk_SettingId" />
+          </Key>
+          <Property Name="Pk_SettingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminEmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="SenderEmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+          <Property Name="Port" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsSSL" Type="bit" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="SiteLogo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tax" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsTaxFree" Type="bit" />
+          <Property Name="CompanyFee" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="FacebookLink" Type="nvarchar" MaxLength="100" />
+          <Property Name="TwitterLink" Type="nvarchar" MaxLength="100" />
+          <Property Name="InstagramLink" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="Pk_StateId" />
+          </Key>
+          <Property Name="Pk_StateId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fk_CountryId" Type="bigint" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="Pk_UserId" />
+          </Key>
+          <Property Name="Pk_UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MidleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fk_RoleId" Type="uniqueidentifier" />
+          <Property Name="Gov_IssueId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EligibleWorkId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PoliceVerification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fk_CountryId" Type="bigint" />
+          <Property Name="Fk_StateId" Type="bigint" />
+          <Property Name="Fk_CityId" Type="bigint" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'hardyhat.vineshnilesh888.view_user_job' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="view_user_job">
+          <Key>
+            <PropertyRef Name="Pk_UserId" />
+          </Key>
+          <Property Name="Pk_UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="MidleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="UserImage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fk_RoleId" Type="uniqueidentifier" />
+          <Property Name="Gov_IssueId" Type="nvarchar" MaxLength="50" />
+          <Property Name="EligibleWorkId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PoliceVerification" Type="nvarchar" MaxLength="50" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fk_CountryId" Type="bigint" />
+          <Property Name="Fk_StateId" Type="bigint" />
+          <Property Name="Fk_CityId" Type="bigint" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserType" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="Fk_JobId" Type="bigint" />
+          <Property Name="EmplyeeFeePaymentStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="dashboard_count" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="vineshnilesh888">
+          <Parameter Name="type" Type="varchar" Mode="In" />
+          <Parameter Name="userid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="GET_JOB_EMPLOYEE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="vineshnilesh888">
+          <Parameter Name="jobid" Type="int" Mode="In" />
+          <Parameter Name="userid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <EntityContainer Name="LABOModelStoreContainer">
+          <EntitySet Name="CityMaster" EntityType="Self.CityMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryMaster" EntityType="Self.CountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ContactUs" EntityType="Self.tbl_ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CountryMaster" EntityType="Self.tbl_CountryMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_JobEmployees" EntityType="Self.tbl_JobEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_JobMessage" EntityType="Self.tbl_JobMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_JobPayment" EntityType="Self.tbl_JobPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Jobs" EntityType="Self.tbl_Jobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_PagePermission" EntityType="Self.tbl_PagePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Setting" EntityType="Self.tbl_Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_StateMaster" EntityType="Self.tbl_StateMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="view_user_job" EntityType="Self.view_user_job" store:Type="Views" store:Schema="vineshnilesh888">
+            <DefiningQuery>SELECT 
+[view_user_job].[Pk_UserId] AS [Pk_UserId], 
+[view_user_job].[Username] AS [Username], 
+[view_user_job].[Password] AS [Password], 
+[view_user_job].[FirstName] AS [FirstName], 
+[view_user_job].[MidleName] AS [MidleName], 
+[view_user_job].[LastName] AS [LastName], 
+[view_user_job].[Gender] AS [Gender], 
+[view_user_job].[Address] AS [Address], 
+[view_user_job].[EmailId] AS [EmailId], 
+[view_user_job].[ContactNo] AS [ContactNo], 
+[view_user_job].[CompanyName] AS [CompanyName], 
+[view_user_job].[BirthDate] AS [BirthDate], 
+[view_user_job].[UserImage] AS [UserImage], 
+[view_user_job].[Fk_RoleId] AS [Fk_RoleId], 
+[view_user_job].[Gov_IssueId] AS [Gov_IssueId], 
+[view_user_job].[EligibleWorkId] AS [EligibleWorkId], 
+[view_user_job].[PoliceVerification] AS [PoliceVerification], 
+[view_user_job].[Country] AS [Country], 
+[view_user_job].[State] AS [State], 
+[view_user_job].[City] AS [City], 
+[view_user_job].[Fk_CountryId] AS [Fk_CountryId], 
+[view_user_job].[Fk_StateId] AS [Fk_StateId], 
+[view_user_job].[Fk_CityId] AS [Fk_CityId], 
+[view_user_job].[ZipCode] AS [ZipCode], 
+[view_user_job].[UserType] AS [UserType], 
+[view_user_job].[IsActive] AS [IsActive], 
+[view_user_job].[IsBlocked] AS [IsBlocked], 
+[view_user_job].[CreatedDate] AS [CreatedDate], 
+[view_user_job].[ModifiedDate] AS [ModifiedDate], 
+[view_user_job].[Fk_JobId] AS [Fk_JobId], 
+[view_user_job].[EmplyeeFeePaymentStatus] AS [EmplyeeFeePaymentStatus]
+FROM [vineshnilesh888].[view_user_job] AS [view_user_job]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMaster" />
+            <End Role="CityMaster" EntitySet="CityMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMaster" />
+            <End Role="StateMaster" EntitySet="StateMaster" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LABOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CityMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="StateMaster" Relationship="Self.FK_CityMaster_StateMaster" FromRole="CityMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="CountryMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StateMasters" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="CountryMaster" ToRole="StateMaster" />
+        </EntityType>
+        <EntityType Name="StateMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="CityMasters" Relationship="Self.FK_CityMaster_StateMaster" FromRole="StateMaster" ToRole="CityMaster" />
+          <NavigationProperty Name="CountryMaster" Relationship="Self.FK_StateMaster_CountryMaster" FromRole="StateMaster" ToRole="CountryMaster" />
+        </EntityType>
+        <EntityType Name="tbl_ContactUs">
+          <Key>
+            <PropertyRef Name="Pk_ContactUsId" />
+          </Key>
+          <Property Name="Pk_ContactUsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="emailAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Contact_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_CountryMaster">
+          <Key>
+            <PropertyRef Name="Pk_CountryId" />
+          </Key>
+          <Property Name="Pk_CountryId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_JobMessage">
+          <Key>
+            <PropertyRef Name="Pk_JobMessageId" />
+          </Key>
+          <Property Name="Pk_JobMessageId" Type="Guid" Nullable="false" />
+          <Property Name="Fk_JobId" Type="Guid" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_JobPayment">
+          <Key>
+            <PropertyRef Name="Pk_JobPaymentId" />
+          </Key>
+          <Property Name="Pk_JobPaymentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_JobId" Type="Int64" />
+          <Property Name="UserId" Type="Int64" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TransactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Jobs">
+          <Key>
+            <PropertyRef Name="Pk_JobId" />
+          </Key>
+          <Property Name="Pk_JobId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UniqueJobId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientUserId" Type="Guid" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobTiming" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoOfEmployeeNeeded" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CompanyFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ClientFeePaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientFeePaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_PagePermission">
+          <Key>
+            <PropertyRef Name="Pk_PageId" />
+          </Key>
+          <Property Name="Pk_PageId" Type="Guid" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsClient" Type="Boolean" />
+          <Property Name="IsEmployee" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_Roles">
+          <Key>
+            <PropertyRef Name="Pk_RoleId" />
+          </Key>
+          <Property Name="Pk_RoleId" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_Setting">
+          <Key>
+            <PropertyRef Name="Pk_SettingId" />
+          </Key>
+          <Property Name="Pk_SettingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SenderEmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Port" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsSSL" Type="Boolean" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SiteLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsTaxFree" Type="Boolean" />
+          <Property Name="CompanyFee" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FacebookLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TwitterLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramLink" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_StateMaster">
+          <Key>
+            <PropertyRef Name="Pk_StateId" />
+          </Key>
+          <Property Name="Pk_StateId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_CountryId" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_Users">
+          <Key>
+            <PropertyRef Name="Pk_UserId" />
+          </Key>
+          <Property Name="Pk_UserId" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MidleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="UserImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_RoleId" Type="Guid" />
+          <Property Name="Gov_IssueId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EligibleWorkId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PoliceVerification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_CountryId" Type="Int64" />
+          <Property Name="Fk_StateId" Type="Int64" />
+          <Property Name="Fk_CityId" Type="Int64" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CityMaster_StateMaster">
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+          <End Role="CityMaster" Type="Self.CityMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CityMaster">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateMaster_CountryMaster">
+          <End Role="CountryMaster" Type="Self.CountryMaster" Multiplicity="0..1" />
+          <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryMaster">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StateMaster">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LABOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CityMasters" EntityType="Self.CityMaster" />
+          <EntitySet Name="CountryMasters" EntityType="Self.CountryMaster" />
+          <EntitySet Name="StateMasters" EntityType="Self.StateMaster" />
+          <EntitySet Name="tbl_ContactUs" EntityType="Self.tbl_ContactUs" />
+          <EntitySet Name="tbl_CountryMaster" EntityType="Self.tbl_CountryMaster" />
+          <EntitySet Name="tbl_JobMessage" EntityType="Self.tbl_JobMessage" />
+          <EntitySet Name="tbl_JobPayment" EntityType="Self.tbl_JobPayment" />
+          <EntitySet Name="tbl_Jobs" EntityType="Self.tbl_Jobs" />
+          <EntitySet Name="tbl_PagePermission" EntityType="Self.tbl_PagePermission" />
+          <EntitySet Name="tbl_Roles" EntityType="Self.tbl_Roles" />
+          <EntitySet Name="tbl_Setting" EntityType="Self.tbl_Setting" />
+          <EntitySet Name="tbl_StateMaster" EntityType="Self.tbl_StateMaster" />
+          <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" />
+          <AssociationSet Name="FK_CityMaster_StateMaster" Association="Self.FK_CityMaster_StateMaster">
+            <End Role="StateMaster" EntitySet="StateMasters" />
+            <End Role="CityMaster" EntitySet="CityMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateMaster_CountryMaster" Association="Self.FK_StateMaster_CountryMaster">
+            <End Role="CountryMaster" EntitySet="CountryMasters" />
+            <End Role="StateMaster" EntitySet="StateMasters" />
+          </AssociationSet>
+          <EntitySet Name="view_user_job" EntityType="LABOModel.view_user_job" />
+          <EntitySet Name="tbl_JobEmployees" EntityType="LABOModel.tbl_JobEmployees" />
+          <FunctionImport Name="GET_JOB_EMPLOYEE" ReturnType="Collection(LABOModel.GET_JOB_EMPLOYEE_Result)">
+            <Parameter Name="jobid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="dashboard_count" ReturnType="Collection(LABOModel.dashboard_count_Result)">
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Guid" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="view_user_job">
+          <Key>
+            <PropertyRef Name="Pk_UserId" />
+          </Key>
+          <Property Name="Pk_UserId" Type="Guid" Nullable="false" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MidleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="UserImage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_RoleId" Type="Guid" />
+          <Property Name="Gov_IssueId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EligibleWorkId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PoliceVerification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fk_CountryId" Type="Int64" />
+          <Property Name="Fk_StateId" Type="Int64" />
+          <Property Name="Fk_CityId" Type="Int64" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="Fk_JobId" Type="Int64" />
+          <Property Name="EmplyeeFeePaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_JobEmployees">
+          <Key>
+            <PropertyRef Name="Pk_JobEmployeeId" />
+          </Key>
+          <Property Name="Pk_JobEmployeeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_JobId" Type="Int64" />
+          <Property Name="fromUserId" Type="Guid" />
+          <Property Name="EmplyeeFeePaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmplyeeFeePaymentDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="toUserId" Type="Guid" />
+          <Property Name="fromUserName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="GET_JOB_EMPLOYEE_Result">
+          <Property Type="Guid" Name="Pk_UserId" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ContactNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EligibleWorkId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="Fk_CityId" Nullable="true" />
+          <Property Type="Int64" Name="Fk_CountryId" Nullable="true" />
+          <Property Type="Guid" Name="Fk_RoleId" Nullable="true" />
+          <Property Type="Int64" Name="Fk_StateId" Nullable="true" />
+          <Property Type="String" Name="Gender" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Gov_IssueId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="MidleName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Username" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UserImage" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="Int64" Name="Pk_JobId" Nullable="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="ClientFeePaymentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ClientFeePaymentStatus" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ClientUserId" Nullable="true" />
+          <Property Type="Decimal" Name="CompanyFee" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="JobCategory" Nullable="true" />
+          <Property Type="String" Name="JobDescription" Nullable="true" />
+          <Property Type="String" Name="JobStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="JobTiming" Nullable="true" />
+          <Property Type="String" Name="JobTitle" Nullable="true" />
+          <Property Type="Int32" Name="NoOfEmployeeNeeded" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" />
+          <Property Type="String" Name="UniqueJobId" Nullable="true" />
+          <Property Type="Int64" Name="Fk_JobId" Nullable="true" />
+          <Property Type="Guid" Name="fromUserId" Nullable="true" />
+          <Property Type="Guid" Name="toUserId" Nullable="true" />
+          <Property Type="String" Name="fromUserName" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="EmplyeeFeePaymentStatus" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="dashboard_count_Result">
+          <Property Type="Int32" Name="TotalAllUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalActiveUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalBlockedUsers" Nullable="true" />
+          <Property Type="Int32" Name="TotalClients" Nullable="true" />
+          <Property Type="Int32" Name="ActiveClients" Nullable="true" />
+          <Property Type="Int32" Name="PendingClients" Nullable="true" />
+          <Property Type="Int32" Name="BlockedClients" Nullable="true" />
+          <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+          <Property Type="Int32" Name="ActiveEmployees" Nullable="true" />
+          <Property Type="Int32" Name="PendingEmployees" Nullable="true" />
+          <Property Type="Int32" Name="BlockedEmployees" Nullable="true" />
+          <Property Type="Int32" Name="TotalJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalActiveJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalInActiveJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalPendingJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalApprovedJobs" Nullable="true" />
+          <Property Type="Int32" Name="TotalRequestedJobs" Nullable="false" />
+          <Property Type="Int32" Name="TotalProposalJobs" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LABOModelStoreContainer" CdmEntityContainer="LABOEntities">
+          <EntitySetMapping Name="CityMasters">
+            <EntityTypeMapping TypeName="LABOModel.CityMaster">
+              <MappingFragment StoreEntitySet="CityMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryMasters">
+            <EntityTypeMapping TypeName="LABOModel.CountryMaster">
+              <MappingFragment StoreEntitySet="CountryMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMasters">
+            <EntityTypeMapping TypeName="LABOModel.StateMaster">
+              <MappingFragment StoreEntitySet="StateMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ContactUs">
+            <EntityTypeMapping TypeName="LABOModel.tbl_ContactUs">
+              <MappingFragment StoreEntitySet="tbl_ContactUs">
+                <ScalarProperty Name="Pk_ContactUsId" ColumnName="Pk_ContactUsId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Contact_No" ColumnName="Contact_No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CountryMaster">
+            <EntityTypeMapping TypeName="LABOModel.tbl_CountryMaster">
+              <MappingFragment StoreEntitySet="tbl_CountryMaster">
+                <ScalarProperty Name="Pk_CountryId" ColumnName="Pk_CountryId" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_JobMessage">
+            <EntityTypeMapping TypeName="LABOModel.tbl_JobMessage">
+              <MappingFragment StoreEntitySet="tbl_JobMessage">
+                <ScalarProperty Name="Pk_JobMessageId" ColumnName="Pk_JobMessageId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_JobPayment">
+            <EntityTypeMapping TypeName="LABOModel.tbl_JobPayment">
+              <MappingFragment StoreEntitySet="tbl_JobPayment">
+                <ScalarProperty Name="Pk_JobPaymentId" ColumnName="Pk_JobPaymentId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Jobs">
+            <EntityTypeMapping TypeName="LABOModel.tbl_Jobs">
+              <MappingFragment StoreEntitySet="tbl_Jobs">
+                <ScalarProperty Name="Pk_JobId" ColumnName="Pk_JobId" />
+                <ScalarProperty Name="UniqueJobId" ColumnName="UniqueJobId" />
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobLocation" ColumnName="JobLocation" />
+                <ScalarProperty Name="JobTiming" ColumnName="JobTiming" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="NoOfEmployeeNeeded" ColumnName="NoOfEmployeeNeeded" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CompanyFee" ColumnName="CompanyFee" />
+                <ScalarProperty Name="ClientFeePaymentStatus" ColumnName="ClientFeePaymentStatus" />
+                <ScalarProperty Name="ClientFeePaymentDate" ColumnName="ClientFeePaymentDate" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_PagePermission">
+            <EntityTypeMapping TypeName="LABOModel.tbl_PagePermission">
+              <MappingFragment StoreEntitySet="tbl_PagePermission">
+                <ScalarProperty Name="Pk_PageId" ColumnName="Pk_PageId" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="IsClient" ColumnName="IsClient" />
+                <ScalarProperty Name="IsEmployee" ColumnName="IsEmployee" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Roles">
+            <EntityTypeMapping TypeName="LABOModel.tbl_Roles">
+              <MappingFragment StoreEntitySet="tbl_Roles">
+                <ScalarProperty Name="Pk_RoleId" ColumnName="Pk_RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Setting">
+            <EntityTypeMapping TypeName="LABOModel.tbl_Setting">
+              <MappingFragment StoreEntitySet="tbl_Setting">
+                <ScalarProperty Name="Pk_SettingId" ColumnName="Pk_SettingId" />
+                <ScalarProperty Name="AdminEmailId" ColumnName="AdminEmailId" />
+                <ScalarProperty Name="SenderEmailId" ColumnName="SenderEmailId" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="IsSSL" ColumnName="IsSSL" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="SiteLogo" ColumnName="SiteLogo" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="IsTaxFree" ColumnName="IsTaxFree" />
+                <ScalarProperty Name="CompanyFee" ColumnName="CompanyFee" />
+                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+                <ScalarProperty Name="TwitterLink" ColumnName="TwitterLink" />
+                <ScalarProperty Name="InstagramLink" ColumnName="InstagramLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_StateMaster">
+            <EntityTypeMapping TypeName="LABOModel.tbl_StateMaster">
+              <MappingFragment StoreEntitySet="tbl_StateMaster">
+                <ScalarProperty Name="Pk_StateId" ColumnName="Pk_StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Fk_CountryId" ColumnName="Fk_CountryId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Users">
+            <EntityTypeMapping TypeName="LABOModel.tbl_Users">
+              <MappingFragment StoreEntitySet="tbl_Users">
+                <ScalarProperty Name="Pk_UserId" ColumnName="Pk_UserId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MidleName" ColumnName="MidleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="Fk_RoleId" ColumnName="Fk_RoleId" />
+                <ScalarProperty Name="Gov_IssueId" ColumnName="Gov_IssueId" />
+                <ScalarProperty Name="EligibleWorkId" ColumnName="EligibleWorkId" />
+                <ScalarProperty Name="PoliceVerification" ColumnName="PoliceVerification" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Fk_CountryId" ColumnName="Fk_CountryId" />
+                <ScalarProperty Name="Fk_StateId" ColumnName="Fk_StateId" />
+                <ScalarProperty Name="Fk_CityId" ColumnName="Fk_CityId" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_user_job">
+            <EntityTypeMapping TypeName="LABOModel.view_user_job">
+              <MappingFragment StoreEntitySet="view_user_job">
+                <ScalarProperty Name="EmplyeeFeePaymentStatus" ColumnName="EmplyeeFeePaymentStatus" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Fk_CityId" ColumnName="Fk_CityId" />
+                <ScalarProperty Name="Fk_StateId" ColumnName="Fk_StateId" />
+                <ScalarProperty Name="Fk_CountryId" ColumnName="Fk_CountryId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PoliceVerification" ColumnName="PoliceVerification" />
+                <ScalarProperty Name="EligibleWorkId" ColumnName="EligibleWorkId" />
+                <ScalarProperty Name="Gov_IssueId" ColumnName="Gov_IssueId" />
+                <ScalarProperty Name="Fk_RoleId" ColumnName="Fk_RoleId" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MidleName" ColumnName="MidleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pk_UserId" ColumnName="Pk_UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_JobEmployees">
+            <EntityTypeMapping TypeName="LABOModel.tbl_JobEmployees">
+              <MappingFragment StoreEntitySet="tbl_JobEmployees">
+                <ScalarProperty Name="fromUserName" ColumnName="fromUserName" />
+                <ScalarProperty Name="toUserId" ColumnName="toUserId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmplyeeFeePaymentDate" ColumnName="EmplyeeFeePaymentDate" />
+                <ScalarProperty Name="EmplyeeFeePaymentStatus" ColumnName="EmplyeeFeePaymentStatus" />
+                <ScalarProperty Name="fromUserId" ColumnName="fromUserId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="Pk_JobEmployeeId" ColumnName="Pk_JobEmployeeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GET_JOB_EMPLOYEE" FunctionName="LABOModel.Store.GET_JOB_EMPLOYEE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LABOModel.GET_JOB_EMPLOYEE_Result">
+                <ScalarProperty Name="Pk_UserId" ColumnName="Pk_UserId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="EligibleWorkId" ColumnName="EligibleWorkId" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Fk_CityId" ColumnName="Fk_CityId" />
+                <ScalarProperty Name="Fk_CountryId" ColumnName="Fk_CountryId" />
+                <ScalarProperty Name="Fk_RoleId" ColumnName="Fk_RoleId" />
+                <ScalarProperty Name="Fk_StateId" ColumnName="Fk_StateId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Gov_IssueId" ColumnName="Gov_IssueId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MidleName" ColumnName="MidleName" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserImage" ColumnName="UserImage" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pk_JobId" ColumnName="Pk_JobId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ClientFeePaymentDate" ColumnName="ClientFeePaymentDate" />
+                <ScalarProperty Name="ClientFeePaymentStatus" ColumnName="ClientFeePaymentStatus" />
+                <ScalarProperty Name="ClientUserId" ColumnName="ClientUserId" />
+                <ScalarProperty Name="CompanyFee" ColumnName="CompanyFee" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="JobCategory" ColumnName="JobCategory" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+                <ScalarProperty Name="JobTiming" ColumnName="JobTiming" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="NoOfEmployeeNeeded" ColumnName="NoOfEmployeeNeeded" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="UniqueJobId" ColumnName="UniqueJobId" />
+                <ScalarProperty Name="Fk_JobId" ColumnName="Fk_JobId" />
+                <ScalarProperty Name="fromUserId" ColumnName="fromUserId" />
+                <ScalarProperty Name="toUserId" ColumnName="toUserId" />
+                <ScalarProperty Name="fromUserName" ColumnName="fromUserName" />
+                <ScalarProperty Name="EmplyeeFeePaymentStatus" ColumnName="EmplyeeFeePaymentStatus" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="dashboard_count" FunctionName="LABOModel.Store.dashboard_count">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LABOModel.dashboard_count_Result">
+                <ScalarProperty Name="TotalAllUsers" ColumnName="TotalAllUsers" />
+                <ScalarProperty Name="TotalActiveUsers" ColumnName="TotalActiveUsers" />
+                <ScalarProperty Name="TotalBlockedUsers" ColumnName="TotalBlockedUsers" />
+                <ScalarProperty Name="TotalClients" ColumnName="TotalClients" />
+                <ScalarProperty Name="ActiveClients" ColumnName="ActiveClients" />
+                <ScalarProperty Name="PendingClients" ColumnName="PendingClients" />
+                <ScalarProperty Name="BlockedClients" ColumnName="BlockedClients" />
+                <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+                <ScalarProperty Name="ActiveEmployees" ColumnName="ActiveEmployees" />
+                <ScalarProperty Name="PendingEmployees" ColumnName="PendingEmployees" />
+                <ScalarProperty Name="BlockedEmployees" ColumnName="BlockedEmployees" />
+                <ScalarProperty Name="TotalJobs" ColumnName="TotalJobs" />
+                <ScalarProperty Name="TotalActiveJobs" ColumnName="TotalActiveJobs" />
+                <ScalarProperty Name="TotalInActiveJobs" ColumnName="TotalInActiveJobs" />
+                <ScalarProperty Name="TotalPendingJobs" ColumnName="TotalPendingJobs" />
+                <ScalarProperty Name="TotalApprovedJobs" ColumnName="TotalApprovedJobs" />
+                <ScalarProperty Name="TotalRequestedJobs" ColumnName="TotalRequestedJobs" />
+                <ScalarProperty Name="TotalProposalJobs" ColumnName="TotalProposalJobs" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

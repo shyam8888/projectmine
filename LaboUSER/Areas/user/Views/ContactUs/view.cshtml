@@ -1,0 +1,70 @@
+﻿@model LaboUSER.Models.tbl_ContactUs
+@{
+    ViewBag.Title = "view";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fluid full-width-container about">
+    <h1 class="section-title" id="services">
+        <span>Contact Us</span>
+    </h1>
+    <!-- End Title -->
+    <!--breadcrum start-->
+    <ol class="breadcrumb text-left">
+        <li><a href="/User/contactus/">Contact Us Detail</a></li>
+        <li class="active">Contact Us</li>
+    </ol>
+    <!--breadcrum end-->
+   
+    <div class="page-content profile-edit section-custom">
+        <div class="pmd-card pmd-z-depth">
+            <div class="pmd-card-body">
+                <div class="row">
+
+                    <div class="col-lg-9 custom-col-9">
+                        <h3 class="heading">Contact Us Information</h3>
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">First Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.firstName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Last Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.lastName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Email Address</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.emailAddress</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Message</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.message</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Date</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Convert.ToDateTime(Model.CreatedDate).ToShortDateString()</strong></p>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

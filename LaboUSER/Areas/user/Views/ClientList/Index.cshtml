@@ -1,0 +1,68 @@
+﻿@model List<LaboUSER.Models.tbl_Users> 
+@{
+    
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid full-width-container value-added-detail-page">
+    <div>       
+        <!-- Title -->
+        <h1 class="section-title" id="services">
+            <span>Client List</span>
+        </h1>
+        <!-- End Title -->
+        <!--breadcrum start-->
+        <ol class="breadcrumb text-left">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">Client List</li>
+        </ol>
+        <!--breadcrum end-->
+    </div>
+    <!-- Table -->
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblDatatable">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Id</th>
+                    <th>Contact No</th>
+                    <th>City</th>
+                    <th>County</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                <tr>
+                    <td data-title="First Name">@item.FirstName</td>
+                    <td data-title="Last Name">@item.LastName</td>
+                    <td data-title="Email Id">@item.EmailId</td>
+                    <td data-title="Contact No">@item.ContactNo</td>
+                    <td data-title="City">@item.City</td>
+                    <td data-title="Country">@item.Country</td>
+                    <td data-title="Status">@(item.IsActive == false ? "Pending" : "Active")</td>
+                    <td class="pmd-table-row-action">
+                        <a href="/User/ClientList/view/@item.Pk_UserId" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                            <i class="material-icons md-dark pmd-sd">visibility</i><br>
+                            view										
+                        </a>
+                        @*<a href="javascript:void(0);" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                            <i class="material-icons md-dark pmd-sm">edit</i>
+                        </a>*@
+                        @*<a href="javascript:void(0);" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                            <i class="material-icons md-dark pmd-sm">delete</i>
+                        </a>*@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Card Footer -->
+  
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model List<LaboUSER.Models.tbl_Jobs> 
+@{
+    ViewBag.Title = "MyJobs";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid full-width-container value-added-detail-page">
+    <div>
+        <!-- Title -->
+        <h1 class="section-title" id="services">
+            <span>My Jobs</span>
+        </h1>
+        <!-- End Title -->
+        <!--breadcrum start-->
+        <ol class="breadcrumb text-left">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">My Jobs</li>
+        </ol>
+        <!--breadcrum end-->
+    </div>
+    <!-- Table -->
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblDatatable">
+            <thead>
+                <tr>
+                    <th> Job Id </th>
+                    <th> Job Title </th>
+                    <th> Job Location </th>
+                    <th> Job Timing</th>
+                    <th> No Of Employee Needed </th>
+                    <th> Amount to Pay </th>
+                    <th> Job Status </th>
+                    <th> Posted On Date </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td data-title="UniqueJobId">@item.UniqueJobId.ToUpper()</td>
+                        <td data-title="JobTitle">@item.JobTitle</td>
+                        <td data-title="JobLocation">@item.JobLocation</td>
+                        <td data-title="JobTiming">@item.JobTiming</td>
+                        <td data-title="NoOfEmployeeNeeded">@item.NoOfEmployeeNeeded</td>
+                        <td data-title="Amount">$@item.Amount</td>
+                        <td data-title="JobStatus">@item.JobStatus</td>
+                        <td data-title="CreatedDate">@Convert.ToDateTime(item.CreatedDate).ToShortDateString()</td>
+                        
+                        <td class="pmd-table-row-action">
+                            <a href="/User/Job/jobsetting/@item.Pk_JobId" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                                <i class="material-icons md-dark pmd-sd">visibility</i><br>
+                                view
+                            </a>
+                            <a href="javascript:void(0);" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                                <i class="material-icons md-dark pmd-sm">edit</i>
+                            </a>
+                            <a href="javascript:void(0);" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                                <i class="material-icons md-dark pmd-sm">delete</i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Card Footer -->
+
+</div>

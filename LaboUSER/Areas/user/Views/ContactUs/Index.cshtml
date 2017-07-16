@@ -1,0 +1,55 @@
+﻿@model List<LaboUSER.Models.tbl_ContactUs>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container-fluid full-width-container value-added-detail-page">
+    <div>
+        <!-- Title -->
+        <h1 class="section-title" id="services">
+            <span>Contact Us</span>
+        </h1>
+        <!-- End Title -->
+        <!--breadcrum start-->
+        <ol class="breadcrumb text-left">
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">Contact Us</li>
+        </ol>
+        <!--breadcrum end-->
+    </div>
+    <!-- Table -->
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblDatatable">
+            <thead>
+                <tr>
+                    <th>First Name </th>
+                    <th>Last Name </th>
+                    <th>Email Address </th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td data-title="UniqueJobId">@item.firstName</td>
+                        <td data-title="JobTitle">@item.lastName</td>
+                        <td data-title="JobLocation">@item.emailAddress</td>
+                        <td data-title="JobTiming">@Convert.ToDateTime(item.CreatedDate).ToShortDateString()</td>
+                     
+                        <td class="pmd-table-row-action">
+                            <a href="/User/contactus/view/@item.Pk_ContactUsId" class="btn pmd-btn-fab pmd-btn-flat pmd-ripple-effect btn-default btn-sm">
+                                <i class="material-icons md-dark pmd-sd">visibility</i><br>
+                                view
+                            </a>
+                           
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- Card Footer -->
+
+</div>

@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Registration</h1>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active">Registration</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/#title-->
+<section id="registration" class="container">
+    <div class="col-md-12 text-center">
+        <div class="col-sm-5">
+            <div class="text-muted">
+                <div><span class="glyphicon glyphicon-user"></span></div>
+                <div class="o-user-type-selection">I want to hire a freelancer</div>
+            </div>
+            <p class="fs-sm m-lg-bottom">
+                Find, collaborate with,
+                        <br>
+                and pay an expert.
+            </p>
+            <a class="btn btn-primary text-capitalize m-0" href="/register/employer" target="_blank">Hire</a>
+        </div>
+
+        <div class="col-sm-2 o-or-divider">OR</div>
+
+        <div class="col-sm-5">
+            <div class="text-muted">
+                <div><span class="glyphicon glyphicon-user"></span></div>
+                <div class="o-user-type-selection">I'm looking for online work</div>
+            </div>
+            <p class="fs-sm m-lg-bottom">
+                Find freelance projects and
+                        <br>
+                grow your business.
+            </p>
+            <a class="btn btn-primary text-capitalize m-0" href="/register/client" target="_blank">Work</a>
+        </div>
+    </div>
+</section>
+<!--/#registration-->

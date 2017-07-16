@@ -1,0 +1,66 @@
+﻿@model List<LaboUSER.Models.GET_JOB_EMPLOYEE_Result>
+
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblHiredCandidDatatable">
+            <thead>
+                <tr>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Gender </th>
+                    <th> State </th>
+                    <th> City </th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.State</td>
+                        <td>@item.City</td>
+                        <td>@item.EmplyeeFeePaymentStatus</td>
+                        <td class="pmd-table-row-action">
+                         @*   @Html.Partial("_invitationsentsuccess")*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#tblHiredCandidDatatable').DataTable({
+                responsive: false,
+                order: [1, 'asc'],
+                bFilter: true,
+                bLengthChange: true,
+                pagingType: "simple",
+                "paging": true,
+                "searching": true,
+                "language": {
+                    "info": " _START_ - _END_ of _TOTAL_ ",
+                    "sLengthMenu": "<span class='custom-select-title'>Rows per page:</span> <span class='custom-select'> _MENU_ </span>",
+                    "sSearch": "",
+                    "sSearchPlaceholder": "Search",
+                    "paginate": {
+                        "sNext": " ",
+                        "sPrevious": " "
+                    },
+                },
+                dom:
+                    "<'pmd-card-title'<'data-table-title'><'search-paper pmd-textfield'f>>" +
+                    "<'custom-select-info'<'custom-select-item'><'custom-select-action'>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'pmd-card-footer' <'pmd-datatable-pagination' l i p>>",
+            });
+            $('.custom-select-info').hide();
+
+        });
+    </script>

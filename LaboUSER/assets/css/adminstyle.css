@@ -1,0 +1,183 @@
+body
+{
+    font-family: "Muli",arial !important;
+}
+
+.material-icons.md-dark
+{
+    color: rgb(201, 200, 200);
+}
+
+.material-icons.pmd-md, .material-icons.md-36
+{
+    font-size: 20px;
+}
+
+.settings .admin-footer
+{
+    margin-top: 0;
+}
+
+.settings .pmd-card-body
+{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.form-group h2
+{
+    margin: 5px 0;
+}
+
+.setting nav .pmd-dropdown.open > .pmd-dropdown-menu-container
+{
+    width: 150px !important;
+}
+
+    .setting nav .pmd-dropdown.open > .pmd-dropdown-menu-container > .pmd-dropdown-menu-bg
+    {
+        transform: scale(1);
+        width: 150px !important;
+    }
+
+    .setting nav .pmd-dropdown.open > .pmd-dropdown-menu-container > .dropdown-menu
+    {
+        opacity: 1;
+        width: 150px !important;
+    }
+
+.setting .pmd-dropdown .dropdown-menu ul > li > a
+{
+    float: left;
+}
+
+.setting i.material-icons.md-dark.pmd-md
+{
+    font-size: 26px;
+    color: #fff;
+}
+
+.setting .col-md-6 .btn
+{
+    margin: 5px 2px 15px 2px;
+}
+/*Sign Up Css Star*/
+.sign_up .form-horizontal .control-label
+{
+    text-align: left;
+    color: rgba(0, 0, 0, 0.74);
+}
+
+.sign_up .form-group.pmd-textfield.col-sm-12
+{
+    padding-left: 30px;
+}
+
+.dashboard .sign_up .pmd-card-body
+{
+    min-height: 50px;
+}
+
+.sign_up .pmd-z-depth
+{
+    box-shadow: 3px 3px 29px 8px #9a9797;
+}
+
+.sign_up .col-md-12
+{
+    width: 100%;
+    display: inline-block;
+}
+
+.pmd-content.dashboard
+{
+    margin-left: auto;
+    /*width: 95%;*/
+    margin-right: auto;
+}
+
+.sign_up .col-md-10
+{
+    margin: 0 auto;
+    display: block;
+    float: none;
+}
+
+.sign_up .form-group.btns.margin-bot-30.col-sm-12
+{
+    padding-left: 30px;
+}
+
+.sign_up h1
+{
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 36px;
+    font-family: "Muli",arial;
+}
+
+body.SIGN_UP_BG
+{
+    background: -moz-radial-gradient(center, ellipse cover, rgba(235,235,235,0.3) 17%, rgba(220,220,220,0.3) 35%, rgba(171,171,171,0.97) 95%, rgba(171,171,171,1) 97%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(17%, rgba(235,235,235,0.3)), color-stop(35%, rgba(220,220,220,0.3)), color-stop(95%, rgba(171,171,171,0.97)), color-stop(97%, rgba(171,171,171,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(235,235,235,0.3) 17%, rgba(220,220,220,0.3) 35%, rgba(171,171,171,0.97) 95%, rgba(171,171,171,1) 97%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(235,235,235,0.3) 17%, rgba(220,220,220,0.3) 35%, rgba(171,171,171,0.97) 95%, rgba(171,171,171,1) 97%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(235,235,235,0.3) 17%, rgba(220,220,220,0.3) 35%, rgba(171,171,171,0.97) 95%, rgba(171,171,171,1) 97%);
+    background: radial-gradient(ellipse at center, rgba(235,235,235,0.3) 17%, rgba(220,220,220,0.3) 35%, rgba(171,171,171,0.97) 95%, rgba(171,171,171,1) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EBEBEB', endColorstr='#ABABAB',GradientType=1 );
+}
+/*Sign Up Css End*/
+
+/*Responsive css*/
+
+@media (mx-width: 767px)
+{
+    .sign_up .select2-container--bootstrap
+    {
+        width: 100% !important;
+    }
+}
+
+.navbar-inverse
+{
+    background-color: #34495e;
+    border-color: #34495e;
+}
+
+.login-card .loginlogo
+{
+    background: #34495e;
+    border-radius: 4px;
+    padding: 15px 15px 10px;
+}
+.login-card h3
+{
+        margin-top: 10px;
+}
+
+.custom-statistics li
+{
+    width:14.68% !important;
+}
+@media (max-width: 767px) {
+
+.custom-statistics li
+{
+    width:48% !important;
+}
+
+}
+.job-statistics li
+{
+    width:23% !important;
+}
+@media (max-width: 767px) {
+
+.job-statistics li
+{
+    width:48% !important;
+}
+
+}

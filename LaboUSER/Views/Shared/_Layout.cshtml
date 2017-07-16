@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Hardy Hat </title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    @*<link rel="shortcut icon" href="images/ico/favicon.ico">*@
+    <link rel="shortcut icon" href="~/images/ico/fv.jpg">
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<body>
+    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="/images/logo.png" alt="logo"></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li><a href="/About/">About Us</a></li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            @*<li><a href="/FAQ/">FAQ</a></li>
+                            *@
+                            <li><a href="/Privacy/">Privacy Policy</a></li>
+                            <li><a href="/Terms/">Terms of Use</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Contact/">Contact Us</a></li>
+                    <li><a href="/Login">Login</a></li>
+                    <li><a href="/Signup/">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!--/header-->
+    @RenderBody()
+
+    <section id="bottom" class="wet-asphalt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h4>About Us</h4>
+                    <p>If you’re an employer looking for staff, your local job active provider can find job-ready candidates that fit your needs, at small cost to you.</p>
+                    <p>Hardy hat we are committed to professional services to all our clients and customer and we realize the value of hiring professionals employee who understand your work.</p>
+                </div>
+                <!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Company</h4>
+                    <div>
+                        <ul class="arrow">
+                            <li><a href="/About/">Company Overview</a></li>
+                            <li><a href="#">Meet The Team</a></li>
+                            <li><a href="/Contact/">Conatct Us</a></li>
+                            <li><a href="/Privacy/">Privacy Policy</a></li>
+                            <li><a href="/Terms/">Terms of Use</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!--/.col-md-3-->
+
+                @*<div class="col-md-3 col-sm-6">
+                    <h4>Latest Blog</h4>
+                    <div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <img src="/images/blog/thumb1.jpg" alt="">
+                            </div>
+                            <div class="media-body">
+                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                                <small class="muted">Posted 17 Aug 2013</small>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <img src="/images/blog/thumb2.jpg" alt="">
+                            </div>
+                            <div class="media-body">
+                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                                <small class="muted">Posted 13 Sep 2013</small>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="pull-left">
+                                <img src="/images/blog/thumb3.jpg" alt="">
+                            </div>
+                            <div class="media-body">
+                                <span class="media-heading"><a href="#">Pellentesque habitant morbi tristique senectus</a></span>
+                                <small class="muted">Posted 11 Jul 2013</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.col-md-3-->
+                *@
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Address</h4>
+                    <address>
+                        <strong>Hardy Hat </strong>
+                        <br>
+                        info@hardyhat.com
+                        <br>
+                        <abbr title="Phone">P:</abbr>
+                        +1(416)-458-3392                   
+                    </address>
+                </div>
+                <!--/.col-md-3-->
+
+                <div class="col-md-3 col-sm-6">
+                    <h4>Social Networking</h4>
+                    <div class="">
+                        <a class="btn btn-social btn-facebook" target="_blank" href="https://www.facebook.com/Hard-Hat-163941174095179/"><i class="icon-facebook"></i></a>
+                        <a class="btn btn-social btn-google-plus" target="_blank" href="#"><i class="icon-google-plus"></i></a>
+                        <a class="btn btn-social btn-twitter" target="_blank" href="https://twitter.com/Hard_Hat__"><i class="icon-twitter"></i></a>
+                        <a class="btn btn-social btn-linkedin" target="_blank" href="https://www.instagram.com/hard_hat_/"><i class="icon-instagram"></i></a>
+                    </div>
+                </div>
+                <!--/.col-md-3-->
+
+            </div>
+        </div>
+    </section>
+    <!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2017 <a href="javascript:void(0);">Hardy Hat</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/About/">About Us</a></li>
+                        @*<li><a href="/FAQ/">Faq</a></li>
+                        *@
+                        <li><a href="/Contact/">Contact Us</a></li>
+                        <li><a id="gototop" class="gototop" href="#"><i class="icon-chevron-up"></i></a></li>
+                        <!--#gototop-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/#footer-->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.prettyPhoto.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

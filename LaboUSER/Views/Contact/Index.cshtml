@@ -1,0 +1,67 @@
+﻿@model LaboUSER.Models.tbl_ContactUs
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Contact Us</h1>
+                    <p> info@hardyhat.com </p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="/">Home</a></li>   
+                        <li class="active">Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->    
+
+    <section id="contact-page" class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <h4>Contact Form</h4>
+                <div class="status alert alert-success" style="display: none"></div>
+             
+                @using(Html.BeginForm("Index","Contact",FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.firstName, new { @class = "form-control", @required = "required",@placeholder="First Name" })
+                             
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.lastName, new { @class = "form-control", @required = "required",@placeholder="Last Name" })
+                              
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.emailAddress, new { @class = "form-control", @required = "required",@type="email",@placeholder="Email address" })
+                               
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Contact_No, new { @class = "form-control", @required = "required", @placeholder = "Contact Number" })
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            @Html.TextAreaFor(model => model.message, new { @class = "form-control", @required = "required" ,@rows="8",@placeholder="Message"})
+                         
+                        </div>
+                    </div>
+               }
+            </div><!--/.col-sm-8-->
+            <div class="col-sm-4">
+                <h4>Our Location</h4>
+                <iframe width="100%" height="215" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d65752.86959154926!2d-79.9086627036324!3d43.25364859576179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x882c986c27de778f%3A0x2b6aee56d8df0e21!2sHamilton%2C+ON%2C+Canada!3m2!1d43.2557206!2d-79.8711024!4m5!1s0x882c986c27de778f%3A0x2b6aee56d8df0e21!2sHamilton%2C+ON%2C+Canada!3m2!1d43.2557206!2d-79.8711024!5e0!3m2!1sen!2sus!4v1483813538523"></iframe>
+                
+            </div><!--/.col-sm-4-->
+        </div>
+    </section><!--/#contact-page-->

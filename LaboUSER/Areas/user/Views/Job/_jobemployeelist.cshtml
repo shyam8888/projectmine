@@ -1,0 +1,81 @@
+﻿@model List<LaboUSER.Models.GET_JOB_EMPLOYEE_Result>
+    <div class="table-responsive pmd-card pmd-z-depth">
+        <table class="table table-mc-red pmd-table" id="tblJobDatatable">
+            <thead>
+                <tr>
+                    <th> First Name </th>
+                    <th> Last Name </th>
+                    <th> Gender </th>
+                    <th> State </th>
+                    <th> City </th>
+
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Gender</td>
+                        <td>@item.State</td>
+                        <td>@item.City</td>
+                        <td class="pmd-table-row-action">
+                            @if (@item.EmplyeeFeePaymentStatus == "employee requested")
+                            {
+                                @Html.Partial("_employeerequestedsuccess")
+                            }
+                            else if (@item.EmplyeeFeePaymentStatus == "invitation sent")
+                            {
+                                @Html.Partial("_invitationsentsuccess")
+                            }
+                            else
+                            {
+                                <div id='invitationsent_@item.Pk_UserId'>
+                                    @Ajax.ActionLink("Invite to job",
+                                 "invitejob",
+                                 "job",
+                                 new { userid = @item.Pk_UserId },
+                                 new AjaxOptions { UpdateTargetId = "invitationsent_" + @item.Pk_UserId }, new { @class = "btn btn-sm pmd-btn-raised pmd-ripple-effect btn-primary" })
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        $(document).ready(function () {
+
+            $('#tblJobDatatable').DataTable({
+                responsive: false,
+                order: [1, 'asc'],
+                bFilter: true,
+                bLengthChange: true,
+                pagingType: "simple",
+                "paging": true,
+                "searching": true,
+                "language": {
+                    "info": " _START_ - _END_ of _TOTAL_ ",
+                    "sLengthMenu": "<span class='custom-select-title'>Rows per page:</span> <span class='custom-select'> _MENU_ </span>",
+                    "sSearch": "",
+                    "sSearchPlaceholder": "Search",
+                    "paginate": {
+                        "sNext": " ",
+                        "sPrevious": " "
+                    },
+                },
+                dom:
+                    "<'pmd-card-title'<'data-table-title'><'search-paper pmd-textfield'f>>" +
+                    "<'custom-select-info'<'custom-select-item'><'custom-select-action'>>" +
+                    "<'row'<'col-sm-12'tr>>" +
+                    "<'pmd-card-footer' <'pmd-datatable-pagination' l i p>>",
+            });
+            $('.custom-select-info').hide();
+
+        });
+    </script>

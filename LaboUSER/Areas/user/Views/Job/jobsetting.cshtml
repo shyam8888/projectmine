@@ -1,0 +1,63 @@
+﻿@model List<LaboUSER.Models.GET_JOB_EMPLOYEE_Result>
+    @{
+        ViewBag.Title = "jobsetting";
+        Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+    }
+  @*  @System.Web.Optimization.Scripts.Render("~/bundles/jqueryval")*@
+    <div class="container-fluid full-width-container">
+        <h1 class="section-title" id="services">
+            <span>Job Application</span>
+        </h1>
+        <!-- End Title -->
+        <!--breadcrum start-->
+        <ol class="breadcrumb text-left">
+            <li><a href="/User/job/myjobs">My Jobs</a></li>
+            <li class="active">Job Application</li>
+        </ol>
+        <!--breadcrum end-->
+
+    </div>
+    <div class="container-fluid settings">
+        <div class="row" id="card-masonry">
+            <div class="col-md-12 col-sm-12">
+                <div class="component-box">
+                    <div class="pmd-card pmd-z-depth">
+                        <div class="pmd-tabs pmd-tabs-bg">
+                            <div class="pmd-tab-active-bar"></div>
+                            <ul role="tablist" class="nav nav-tabs nav-justified">
+                                <li class="active" role="presentation"><a data-toggle="tab" role="tab" aria-controls="invite-employee" href="#invite-employee">Invite Employees</a></li>
+                                <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="invited-candidates" href="#invited-candidates" id="invitedCandidTab">Invited Candidates</a></li>
+                                <li role="presentation"><a data-toggle="tab" role="tab" aria-controls="hired-candidates" href="#hired-candidates" id="hiredCandidTab">Hired Candidates</a></li>
+                            </ul>
+                        </div>
+                        <div class="pmd-card-body">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="invite-employee">
+                                    @Html.Partial("_search")
+                                    <div id="jobemployeelistAjaxId">
+                                        @Html.Partial("_jobemployeelist")
+                                    </div>
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="invited-candidates"></div>
+                                <div role="tabpanel" class="tab-pane" id="hired-candidates"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Fixed tab example end-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#invitedCandidTab').on("click", function () {
+            var url = '@Url.Action("invitecandid", "job")';
+            $('#invited-candidates').load(url);
+        });
+        $('#hiredCandidTab').on('click', function () {
+            var url = '@Url.Action("hiredcandid", "job")';
+            $('#hired-candidates').load(url);
+        })
+    </script>
+
+

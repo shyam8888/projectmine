@@ -1,0 +1,104 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap.">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+    <title>Login - Hardy Hat</title>
+    @*<link rel="shortcut icon" type="image/x-icon" href="/themes/images/favicon.ico">*@
+    <link rel="shortcut icon" href="~/images/ico/fv.jpg">
+    <!-- Google icon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <!-- Propeller css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/propeller.min.css">
+
+    <!-- Propeller theme css-->
+    <link rel="stylesheet" type="text/css" href="/themes/css/propeller-theme.css" />
+
+    <!-- Propeller admin theme css-->
+    <link rel="stylesheet" type="text/css" href="/themes/css/propeller-admin.css">
+    <script src="/assets/js/jquery-1.12.2.min.js"></script>
+    <link href="~/assets/css/adminstyle.css" rel="stylesheet" />
+</head>
+
+
+<body class="body-custom SIGN_UP_BG">
+    <!-- Display a success alert at the top-right position of the window -->
+    <button type="button" data-positionx="right" data-positiony="top" data-effect="fadeInUp" data-message="" data-type="success" class="hide btn pmd-ripple-effect btn-success pmd-z-depth pmd-alert-toggle">Alert Success</button>
+
+    <!-- Display an error alert at the top-right position of the window -->
+    <button type="button" data-positionx="right" data-positiony="top" data-effect="fadeInUp" data-message="" data-type="error" class=" hide btn pmd-ripple-effect btn-danger pmd-z-depth pmd-alert-toggle">Alert Error</button>
+    @RenderBody()
+
+
+    <!-- Scripts Starts -->
+
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/propeller.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script>
+        function alert_message(msg, type) {
+            if (type == "success") {
+                $('.btn-success').attr('data-message', msg);
+                $('.btn-success').click();
+            }
+            else if (type = "fail") {
+                $('.btn-danger').attr('data-message', msg);
+                $('.btn-danger').click();
+            }
+        }
+        $(document).ready(function () {
+            var sPath = window.location.pathname;
+            var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+            $(".pmd-sidebar-nav").each(function () {
+                $(this).find("a[href='" + sPage + "']").parents(".dropdown").addClass("open");
+                $(this).find("a[href='" + sPage + "']").parents(".dropdown").find('.dropdown-menu').css("display", "block");
+                $(this).find("a[href='" + sPage + "']").parents(".dropdown").find('a.dropdown-toggle').addClass("active");
+                $(this).find("a[href='" + sPage + "']").addClass("active");
+            });
+        });
+    </script>
+    <!-- login page sections show hide -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.app-list-icon li a').addClass("active");
+            $(".login-for").click(function () {
+                $('.login-card').hide()
+                $('.forgot-password-card').show();
+            });
+            $(".signin").click(function () {
+                $('.login-card').show()
+                $('.forgot-password-card').hide();
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".login-register").click(function () {
+                $('.login-card').hide()
+                $('.forgot-password-card').hide();
+                $('.register-card').show();
+            });
+
+            $(".register-login").click(function () {
+                $('.register-card').hide()
+                $('.forgot-password-card').hide();
+                $('.login-card').show();
+            });
+            $(".forgot-password").click(function () {
+                $('.login-card').hide()
+                $('.register-card').hide()
+                $('.forgot-password-card').show();
+            });
+        });
+    </script>
+
+    <!-- Scripts Ends -->
+
+</body>
+</html>

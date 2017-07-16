@@ -1,0 +1,203 @@
+﻿@model LaboUSER.Areas.user.Models.userjob
+@{
+    ViewBag.Title = "viewjobproposal";
+    Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid full-width-container about">
+    <!-- Title -->
+    <h1 class="section-title" id="services">
+        <span>@Model.tbl_job.JobTitle</span>
+    </h1>
+    <!-- End Title -->
+    <!--breadcrum start-->
+    <ol class="breadcrumb text-left">
+        <li><a href="/User/employeejob/clientjobproposal">Employee / Job Proposal Details</a></li>
+        <li class="active">@Model.tbl_job.JobTitle</li>
+    </ol>
+    <!--breadcrum end-->
+
+    <div class="page-content profile-edit section-custom">
+        <div class="pmd-card pmd-z-depth">
+            <div class="pmd-card-body">
+                <div class="row">
+
+                    <div class="col-lg-9 custom-col-9">
+                        <h3 class="heading">Job Information</h3>
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Id</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.UniqueJobId.ToUpper()</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Title</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobTitle</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Description</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobDescription</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Category</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobCategory</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Location</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobLocation</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Timing</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobTiming</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">No of Employee Needed</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.NoOfEmployeeNeeded</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Amount to Pay</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>$@Model.tbl_job.Amount</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Status</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.JobStatus</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Company Fee</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>$@Model.tbl_job.CompanyFee</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Company Fee Payment Status</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static">
+                                                <strong>
+                                                    @if (Model.tbl_job.ClientFeePaymentStatus != null && Model.tbl_job.ClientFeePaymentStatus != "" && Model.tbl_job.ClientFeePaymentStatus != "Pending")
+                                                    {
+                                                        <span>Complete</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>Pending</span>
+                                                    }
+                                                </strong>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    @if (Model.tbl_job.ClientFeePaymentStatus != null && Model.tbl_job.ClientFeePaymentStatus != "" && Model.tbl_job.ClientFeePaymentStatus != "Pending")
+                                    {
+                                        <div class="form-group pmd-textfield">
+                                            <label class="col-sm-3 control-label" for="u_fname">Job Posted Date</label>
+                                            <div class="col-sm-9">
+                                                <p class="form-control-static"><strong>@Model.tbl_job.ClientFeePaymentDate</strong></p>
+                                            </div>
+                                        </div>
+                                    }
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Job Posted Date</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.CreatedDate</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Note</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_job.Note</strong></p>
+                                        </div>
+                                    </div>
+                                 
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="pmd-card-body">
+                <div class="row">
+
+                    <div class="col-lg-9 custom-col-9">
+                        <h3 class="heading">User Information</h3>
+                        <div class="row">
+                            <form class="form-horizontal">
+                                <fieldset>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">First Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.FirstName</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Middle Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.MidleName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">Last Name</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.LastName</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">State</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.State</strong></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">City</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.City</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pmd-textfield">
+                                        <label class="col-sm-3 control-label" for="u_fname">ZipCode</label>
+                                        <div class="col-sm-9">
+                                            <p class="form-control-static"><strong>@Model.tbl_uses.ZipCode</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group btns">
+                                        <div class="col-sm-9 col-sm-offset-3">
+                                            <a href="/User/employeejob/approvejob/@Model.tbl_job.Pk_JobId" class="btn pmd-ripple-effect btn-success">Approve </a>
+                                            <a href="/User/employeejob/rejectjob/@Model.tbl_job.Pk_JobId" class="btn pmd-ripple-effect btn-danger">Reject </a>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+﻿@model LaboUSER.Areas.user.Models.payment
+@{
+    ViewBag.Title = "checkout";
+    Layout = "~/Areas/user/Views/Shared/_LayoutSignup.cshtml";
+}
+<style>
+    #payment-form iframe {
+        width: 90%;
+    }
+    #payment-form .col-md-12{
+        width:21%;
+    }
+</style>
+<div class="pmd-card card-default pmd-z-depth">
+    <div class="wrapper">
+        <div class="checkout container">
+            <header>
+                <h1>HARD HAT PAYMENT</h1>
+                <p>
+                    Make a test payment with hardhat using PayPal or a card
+                </p>
+            </header>
+            <form id="payment-form" method="post" action="/checkouts">
+                <section>
+                    <div class="bt-drop-in-wrapper">
+                        <div id="bt-dropin"></div>
+                    </div>
+
+                </section>
+                <div class="col-md-12 col-sm-12">
+                    <div class="pmd-card-actions">
+                        <button type="submit" class="btn pmd-ripple-effect btn-primary btn-block">Pay</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/demo.js"></script>
+<script src="https://js.braintreegateway.com/js/braintree-2.27.0.min.js"></script>
+<script>
+    document.title="Payment on HardyHat"
+    var checkout = new Demo({
+        formID: "payment-form"
+    });
+    var client_token = "@ViewBag.ClientToken";
+    braintree.setup(client_token, "dropin", {
+        container: "bt-dropin"
+    });
+</script>
+

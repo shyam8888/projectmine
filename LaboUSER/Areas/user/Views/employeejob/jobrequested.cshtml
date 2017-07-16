@@ -1,0 +1,23 @@
+﻿@model List<LaboUSER.Models.GET_JOB_EMPLOYEE_Result>
+    @{
+        ViewBag.Title = "jobrequested";
+        Layout = "~/Areas/user/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    <div class="container-fluid full-width-container value-added-detail-page">
+        <div>
+            <!-- Title -->
+            <h1 class="section-title" id="services">
+                <span>Job Requested</span>
+            </h1>
+            <!-- End Title -->
+            <!--breadcrum start-->
+            <ol class="breadcrumb text-left">
+                <li class="active">Job Requested</li>
+            </ol>
+            <!--breadcrum end-->
+        </div>
+        <!-- Table -->
+        @Html.Partial("_employeejobrequested")
+        <!-- Card Footer -->
+    </div>

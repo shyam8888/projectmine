@@ -1,0 +1,67 @@
+
+/* Custome Css By Vishal Start */
+.o-or-divider {
+    color: #7d7d7d;
+    font-size: 20px;
+    font-weight: bold;
+}
+.o-or-divider:after, .o-or-divider:before {
+    position: relative;
+    content: "";
+    display: block;
+    padding: 55px 0;
+    border-left: 1px solid #7d7d7d;
+    border-right: 1px solid #e0e0e0;
+    left: 50%;
+	height: 110px; 
+	width: 2px;
+}
+.o-or-divider:before {
+    top: -10px;
+}
+.o-or-divider:after {
+    top: 10px;
+    padding-top: 70px;
+}
+.text-muted .o-user-type-selection {
+    font-size: 18pt;
+    padding: 10px 0;
+}
+.text-center a.btn.btn-primary {
+    background-color: #2ecc71;
+    border: 1px solid transparent;
+    padding: 5px 20px;
+    font-size: 16px;
+}
+.glyphicon-user {
+    font-size: 55px;
+    color: #2ecc71;
+}
+
+/* Responsive css Start */
+@media (max-width: 991px){
+	.text-muted .o-user-type-selection {	font-size: 16pt;}
+}
+@media (max-width:767px){
+	.o-or-divider:after, .o-or-divider:before{transform: rotate(90deg);display: inline-block;}
+	.o-or-divider:before { top: 0; left: -15%; vertical-align: middle;}
+	.o-or-divider:after { top: 0px; padding-top: 0; right: -15%;left: auto; vertical-align: middle;}
+}
+@media (max-width: 567px){
+	.o-or-divider:before{left: -50px;}
+	.o-or-divider:after{right: -50px;}
+	.o-or-divider:after, .o-or-divider:before{height: 70px; padding: 0;}
+}
+/* Responsive css End */
+/* Custome Css By Vishal End */
+
+section#services
+{
+        background-color: #fecc09;
+}
+
+    section#services .media-body h3.media-heading,section#services .media-body p
+    {
+        color: #000000;
+    }
+
