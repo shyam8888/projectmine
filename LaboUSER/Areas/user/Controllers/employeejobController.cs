@@ -54,7 +54,7 @@ namespace LaboUSER.Areas.user.Controllers
             //Get send user details...!!!
             tbl_Users touserdetail = _dataContext.tbl_Users.Where(s => s.Pk_UserId == clsSession.UserID).FirstOrDefault();
             //Get Job Detail...!!!
-            string userid = EncrytDecrypt.passwordEncrypt(clsSession.UserID.ToString(),true);
+            string userid = EncrytDecrypt.passwordEncrypt(clsSession.UserID.ToString(), true);
             string jobid = EncrytDecrypt.passwordEncrypt(id.ToString(), true);
             string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + clsSession.UserID.ToString() + "&jobid=" + id.ToString();
             MailMessage message = new MailMessage(
@@ -65,10 +65,10 @@ namespace LaboUSER.Areas.user.Controllers
            );
             _sendemail.SendEmail(message);
             List<tbl_JobEmployees> jobemployeedata = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id && s.EmplyeeFeePaymentStatus == "Approved").ToList();
+            bool updateFlag = false;
             if (jobemployeedata.Count >= job.NoOfEmployeeNeeded)
             {
-                job.JobStatus = "Approved";
-                _dataContext.SaveChanges();
+                updateFlag = true;
                 //Sent Email to employee to introduce about job detail...!!!
                 //Get send user details...!!!
                 tbl_Users touserdetailClient = _dataContext.tbl_Users.Where(s => s.Pk_UserId == jobstatus.fromUserId).FirstOrDefault();
@@ -83,6 +83,12 @@ namespace LaboUSER.Areas.user.Controllers
                PopulateBody(clsSession.UserName, job.JobTitle, job.JobCategory, job.JobLocation, "$" + job.Amount.ToString(), job.JobDescription, false, paymenturlClient, false, true) // Email message body
                );
                 _sendemail.SendEmail(messageClient);
+            }
+            if (updateFlag)
+            {
+                tbl_Jobs jobupdate = _dataContext.tbl_Jobs.Find(id);
+                jobupdate.JobStatus = "Approved";
+                _dataContext.SaveChanges();
             }
             return RedirectToAction("jobproposals");
         }
@@ -168,7 +174,7 @@ namespace LaboUSER.Areas.user.Controllers
             //Get send user details...!!!
             tbl_Users touserdetail = _dataContext.tbl_Users.Where(s => s.Pk_UserId == jobstatus.fromUserId).FirstOrDefault();
             string userid = EncrytDecrypt.passwordEncrypt(clsSession.UserID.ToString(), true);
-            string jobid = EncrytDecrypt.passwordEncrypt(job.Pk_JobId.ToString(),true);
+            string jobid = EncrytDecrypt.passwordEncrypt(job.Pk_JobId.ToString(), true);
             string paymenturl = "http://hardyhat.com/user/payment/checkout?userid=" + clsSession.UserID.ToString() + "&jobid=" + job.Pk_JobId.ToString();
             //Get Job Detail...!!!
             MailMessage message = new MailMessage(

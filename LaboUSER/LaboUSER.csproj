@@ -1381,6 +1381,7 @@
     <Content Include="Areas\user\Views\Dashboard\Employee.cshtml" />
     <Content Include="Areas\user\Views\Payment\checkout.cshtml" />
     <Content Include="Areas\user\Views\error\notfound.cshtml" />
+    <Content Include="Areas\user\Views\Payment\success.cshtml" />
     <None Include="Properties\PublishProfiles\LABO.pubxml" />
     <Content Include="images\ads\ad1.png" />
     <Content Include="images\ads\ad2.png" />

@@ -34,7 +34,7 @@ namespace LaboUSER.Areas.user.Controllers
             //Check for this jobid,userid,transaction Id status
             if (!string.IsNullOrEmpty(userid) && !string.IsNullOrEmpty(jobid))
             {
-                userid = EncrytDecrypt.passwordDecrypt(userid.ToString(),true);
+                userid = EncrytDecrypt.passwordDecrypt(userid.ToString(), true);
                 jobid = EncrytDecrypt.passwordDecrypt(jobid.ToString(), true);
                 try
                 {
@@ -55,8 +55,10 @@ namespace LaboUSER.Areas.user.Controllers
                         Decimal companyFee = Convert.ToDecimal("2.00");
                         conn.Open();
                         SqlCommand cmdInsert = new SqlCommand("insert into [vineshnilesh888].[tbl_JobPayment] (Fk_JobId,UserId,Amount) values(" + jobid + ",'" + userid + "'," + companyFee + ");", conn);
-                        cmdInsert.ExecuteNonQuery();
+                        int id=cmdInsert.ExecuteNonQuery();
                         conn.Close();
+                        string pk_paymentId = Convert.ToString(id);
+                        clsSession.paymentID = pk_paymentId;
                         Console.WriteLine("Inserting Data Successfully");
 
                     }
@@ -112,18 +114,13 @@ namespace LaboUSER.Areas.user.Controllers
             if (result.IsSuccess())
             {
                 Transaction transaction = result.Target;
-                SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
-                conn.Open();
-                string status = "success";
-                SqlCommand cmdUpdate = new SqlCommand("update [vineshnilesh888].[tbl_JobPayment] SET TransactionId='" + transaction.Id + "',PaymentStatus='" + transaction.Status + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
-                cmdUpdate.ExecuteNonQuery();
-                conn.Close();
-                return RedirectToAction("checkout");
+
+                return RedirectToAction("success", new { id = transaction.Id });
             }
             else if (result.Transaction != null)
             {
-                // return RedirectToAction("Show", new { id = result.Transaction.Id });
-                return RedirectToAction("checkout");
+                return RedirectToAction("success", new { id = result.Target.Id });
+                //return RedirectToAction("checkout");
             }
             else
             {
@@ -139,11 +136,24 @@ namespace LaboUSER.Areas.user.Controllers
                 SqlCommand cmdUpdate = new SqlCommand("update [vineshnilesh888].[tbl_JobPayment] SET PaymentStatus='" + errorMessages + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID) + " ", conn);
                 cmdUpdate.ExecuteNonQuery();
                 conn.Close();
-                return RedirectToAction("checkout");
+                return RedirectToAction("success", new { id = errorMessages });
             }
 
         }
-
+        public ActionResult success(string id)
+        {
+            var gateway = config.GetGateway();
+            Transaction transaction = gateway.Transaction.Find(id);
+            SqlConnection conn = new SqlConnection("Data source=148.72.232.166; Database=hardyhat;User Id=vineshnilesh888;Password=VineshNilesh88");
+            conn.Open();
+            string status = "success";
+            string updateString = "update [vineshnilesh888].[tbl_JobPayment] SET TransactionId='" + transaction.Id + "',PaymentStatus='" + transaction.Status + "' WHERE Pk_JobPaymentId=" + Convert.ToInt32(clsSession.paymentID.ToString());
+            SqlCommand cmdUpdate = new SqlCommand(updateString, conn);
+            cmdUpdate.ExecuteNonQuery();
+            conn.Close();
+            TempData["Flash"] = "Your transaction is successful. Transaction id is : " + id;
+            return View();
+        }
         public ActionResult Show(String id)
         {
             var gateway = config.GetGateway();
