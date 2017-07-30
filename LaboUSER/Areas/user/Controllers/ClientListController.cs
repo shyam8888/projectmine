@@ -23,12 +23,14 @@ namespace LaboUSER.Areas.user.Controllers
 
         public ActionResult Index()
         {
+            // check client role name
             tbl_Roles role = _dataContext.tbl_Roles.Where(x => x.RoleName == "Client").FirstOrDefault();
             List<tbl_Users> lstUsers = _dataContext.tbl_Users.Where(x => x.Fk_RoleId == role.Pk_RoleId).ToList();
             return View(lstUsers);
         }
         public ActionResult View(Guid? id)
         {
+            //check view client role
             tbl_Roles role = _dataContext.tbl_Roles.Where(x => x.RoleName == "Client").FirstOrDefault();
             tbl_Users client = _dataContext.tbl_Users.Where(x => x.Fk_RoleId == role.Pk_RoleId && x.Pk_UserId == id).FirstOrDefault();
 
