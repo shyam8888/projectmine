@@ -48,6 +48,7 @@ namespace LaboUSER.Areas.user.Controllers
                 {
                     try
                     {
+                        // save changes
                         _dataContext.SaveChanges();
                     }
                     catch (DbEntityValidationException dbValEx)
