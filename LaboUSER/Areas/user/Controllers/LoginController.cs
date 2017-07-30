@@ -23,6 +23,7 @@ namespace LaboUSER.Areas.user.Controllers
         [HttpPost]
         public ActionResult Login(loginmodel userLogin)
         {
+            // this is test code
             var model = _dataContext.tbl_Users.Where(s => s.EmailId == userLogin.email && s.Password == userLogin.password && s.IsActive==true && s.IsBlocked==false).SingleOrDefault();
             if (model == null)
             {
