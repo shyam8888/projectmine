@@ -25,7 +25,7 @@ namespace LaboUSER.Areas.user.Controllers
 
         public ActionResult jobproposals()
         {
-            var userDetails = _dataContext.GET_JOB_EMPLOYEE(0, clsSession.UserID).ToList().Where((s => s.EmplyeeFeePaymentStatus == "invitation sent" || s.EmplyeeFeePaymentStatus == "Approved" || s.EmplyeeFeePaymentStatus == "Rejected" && s.toUserId == clsSession.UserID)).ToList();
+            var userDetails = _dataContext.GET_JOB_EMPLOYEE(0, clsSession.UserID).ToList().Where((s => (s.EmplyeeFeePaymentStatus == "invitation sent" || s.EmplyeeFeePaymentStatus == "Approved" || s.EmplyeeFeePaymentStatus == "Rejected") && s.toUserId == clsSession.UserID)).ToList();
             return View(userDetails);
         }
         public ActionResult clientjobproposal()
@@ -40,12 +40,12 @@ namespace LaboUSER.Areas.user.Controllers
         }
         public ActionResult jobrequested()
         {
-            var userDetails = _dataContext.GET_JOB_EMPLOYEE(0, clsSession.UserID).Where(s => s.EmplyeeFeePaymentStatus == "employee requested" || s.EmplyeeFeePaymentStatus == "Approved" && s.fromUserId == clsSession.UserID).ToList();
+            var userDetails = _dataContext.GET_JOB_EMPLOYEE(0, clsSession.UserID).Where(s => (s.EmplyeeFeePaymentStatus == "employee requested" || s.EmplyeeFeePaymentStatus == "Approved" || s.EmplyeeFeePaymentStatus == "Rejected") && s.fromUserId == clsSession.UserID).ToList();
             return View(userDetails);
         }
         public ActionResult approve(Int32 id)
         {
-            tbl_JobEmployees jobstatus = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id).FirstOrDefault();
+            tbl_JobEmployees jobstatus = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id && s.toUserId == clsSession.UserID).FirstOrDefault();
             jobstatus.EmplyeeFeePaymentStatus = "Approved";
             _dataContext.SaveChanges();
             //For Change Job Status...!!!
@@ -87,8 +87,12 @@ namespace LaboUSER.Areas.user.Controllers
             if (updateFlag)
             {
                 tbl_Jobs jobupdate = _dataContext.tbl_Jobs.Find(id);
-                jobupdate.JobStatus = "Approved";
-                _dataContext.SaveChanges();
+                if (TryValidateModel(jobupdate))
+                {
+                    jobupdate.JobStatus = "Approved";
+                    _dataContext.SaveChanges();
+                }
+
             }
             return RedirectToAction("jobproposals");
         }
@@ -136,7 +140,7 @@ namespace LaboUSER.Areas.user.Controllers
                 MailMessage message = new MailMessage(
                "info@hardyhat.com", // From field
                touserdetail.EmailId, // Recipient field
-               "Job Request Sent by Client", // Subject of the email message
+               "Job Request Sent by Employee", // Subject of the email message
                PopulateBody(clsSession.UserName, job.JobTitle, job.JobCategory, job.JobLocation, "$" + job.Amount.ToString(), job.JobDescription, false, "", false, false) // Email message body
                );
                 _sendemail.SendEmail(message);
@@ -157,9 +161,9 @@ namespace LaboUSER.Areas.user.Controllers
             userjobdetails.tbl_uses = userdetails;
             return View(userjobdetails);
         }
-        public ActionResult approvejob(Int32 id)
+        public ActionResult approvejob(Int32 id, Guid fromId)
         {
-            tbl_JobEmployees jobstatus = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id).FirstOrDefault();
+            tbl_JobEmployees jobstatus = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id && s.fromUserId == fromId).FirstOrDefault();
             jobstatus.EmplyeeFeePaymentStatus = "Approved";
             _dataContext.SaveChanges();
             //For Change Job Status...!!!
@@ -183,14 +187,14 @@ namespace LaboUSER.Areas.user.Controllers
            "Job Approved by Client", // Subject of the email message
            PopulateBody(clsSession.UserName, job.JobTitle, job.JobCategory, job.JobLocation, "$" + job.Amount.ToString(), job.JobDescription, true, paymenturl, false, false) // Email message body
            );
-            return View("clientjobproposal");
+            return RedirectToAction("clientjobproposal");
         }
         public ActionResult rejectjob(Int32 id)
         {
             tbl_JobEmployees jobstatus = _dataContext.tbl_JobEmployees.Where(s => s.Fk_JobId == id).FirstOrDefault();
             jobstatus.EmplyeeFeePaymentStatus = "Rejected";
             _dataContext.SaveChanges();
-            return View("clientjobproposal");
+            return RedirectToAction("clientjobproposal");
         }
         private string PopulateBody(string employeename, string jobtitle, string jobcategory, string joblocation, string amountpay, string jobdescription, bool isClient, string paymenturl, bool isEmployee, bool isPaymentClient)
         {

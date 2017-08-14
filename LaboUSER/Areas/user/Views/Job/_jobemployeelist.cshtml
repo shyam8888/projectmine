@@ -26,7 +26,7 @@
                             {
                                 @Html.Partial("_employeerequestedsuccess")
                             }
-                            else if (@item.EmplyeeFeePaymentStatus == "invitation sent")
+                            else if (@item.EmplyeeFeePaymentStatus == "invitation sent" || @item.EmplyeeFeePaymentStatus == "Approved")
                             {
                                 @Html.Partial("_invitationsentsuccess")
                             }

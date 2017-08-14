@@ -32,7 +32,7 @@ namespace LaboUSER.Models
         [RegularExpression(@"[0-9]*", ErrorMessage = "No Of Employee must be a Numbers only.")]
         public Nullable<int> NoOfEmployeeNeeded { get; set; }
         [Required(ErrorMessage = "Amount is required.")]
-        [RegularExpression(@"[0-9]*", ErrorMessage = "Amount must be a Numbers only.")]
+        [RegularExpression(@"^\d+.\d{0,2}$", ErrorMessage = "Amount must be a Numbers only.")]
         public Nullable<decimal> Amount { get; set; }
         public Nullable<decimal> CompanyFee { get; set; }
         public string ClientFeePaymentStatus { get; set; }

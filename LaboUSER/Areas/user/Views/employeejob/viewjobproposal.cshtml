@@ -128,13 +128,13 @@
                                             <p class="form-control-static"><strong>@Model.tbl_job.Note</strong></p>
                                         </div>
                                     </div>
-                                 
+
                                 </fieldset>
                             </form>
                         </div>
 
                     </div>
-                  
+
                 </div>
             </div>
             <div class="pmd-card-body">
@@ -184,12 +184,15 @@
                                             <p class="form-control-static"><strong>@Model.tbl_uses.ZipCode</strong></p>
                                         </div>
                                     </div>
-                                    <div class="form-group btns">
-                                        <div class="col-sm-9 col-sm-offset-3">
-                                            <a href="/User/employeejob/approvejob/@Model.tbl_job.Pk_JobId" class="btn pmd-ripple-effect btn-success">Approve </a>
-                                            <a href="/User/employeejob/rejectjob/@Model.tbl_job.Pk_JobId" class="btn pmd-ripple-effect btn-danger">Reject </a>
+                                    @if (Model.tbl_job.JobStatus != "Approved")
+                                    {
+                                        <div class="form-group btns">
+                                            <div class="col-sm-9 col-sm-offset-3">
+                                                <a href="/User/employeejob/approvejob?id=@Model.tbl_job.Pk_JobId&fromId=@Model.tbl_uses.Pk_UserId" class="btn pmd-ripple-effect btn-success">Approve </a>
+                                                <a href="/User/employeejob/rejectjob/@Model.tbl_job.Pk_JobId" class="btn pmd-ripple-effect btn-danger">Reject </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </fieldset>
                             </form>
                         </div>

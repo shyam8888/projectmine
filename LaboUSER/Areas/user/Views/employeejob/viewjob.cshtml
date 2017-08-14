@@ -127,12 +127,15 @@
                                             <p class="form-control-static"><strong>@Model.Note</strong></p>
                                         </div>
                                     </div>
-                                    <div class="form-group btns">
-                                        <div class="col-sm-9 col-sm-offset-3">
-                                            <a href="/User/employeejob/approve/@Model.Pk_JobId" class="btn pmd-ripple-effect btn-success">Approve </a>
-                                            <a href="/User/employeejob/reject/@Model.Pk_JobId" class="btn pmd-ripple-effect btn-danger">Reject </a>
+                                    @if (Model.JobStatus != "Approved")
+                                    {
+                                        <div class="form-group btns">
+                                            <div class="col-sm-9 col-sm-offset-3">
+                                                <a href="/User/employeejob/approve/@Model.Pk_JobId" class="btn pmd-ripple-effect btn-success">Approve </a>
+                                                <a href="/User/employeejob/reject/@Model.Pk_JobId" class="btn pmd-ripple-effect btn-danger">Reject </a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 </fieldset>
                             </form>
                         </div>
